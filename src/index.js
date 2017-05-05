@@ -2,12 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './components/App';
-import Home from './components/Home';
-import Login from './components/Login';
-import SignUp from './components/SignUp';
-import CreateBoard from './CreateBoard';
-import Dashboard from './Dashboard';
-import Board from './Board';
+import Home from './components/pages/Home';
+import Login from './components/pages/Login';
+import SignUp from './components/pages/SignUp';
+import CreateBoard from './components/modals/CreateBoard';
+import Board from './components/pages/Board';
 
 import auth from './auth'
 
@@ -25,10 +24,6 @@ const routes = (
         <Route path="/boards/:id" component={Board}/>
         <Route path="/signup" component={SignUp}/>
         <Route path="/login" component={Login}/>
-        <Route onEnter={requireAuth}>
-          <Route path="/create" component={CreateBoard}/>
-          <Route path="/dashboard" component={Dashboard}/>
-        </Route>
       </Route>
     </Router>
 );
