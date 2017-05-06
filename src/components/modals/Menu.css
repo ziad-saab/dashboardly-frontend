@@ -31,3 +31,8 @@
   background: green;
   margin: 1rem;
 }
+
+.menu__list {
+  display: flex;
+  flex-flow: column;
+}
