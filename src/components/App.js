@@ -18,7 +18,7 @@ class App extends Component {
           <i className="fa fa-bars fa-2x" onClick={()=>this.setState({ isMenuOpen: !isMenuOpen })}/>
         </div>
 
-        <Menu show={isMenuOpen} closeMenu={this.closeMenu}/>
+        {/* <Menu show={isMenuOpen} closeMenu={this.closeMenu}/> */}
 
         {this.props.children}
 

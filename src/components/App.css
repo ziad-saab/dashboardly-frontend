@@ -1,13 +1,22 @@
+body *, body *:before, body *:after { box-sizing: inherit; }
 body {
+  box-sizing: border-box;
   font-size: 12px;
+  margin: 0px;
 }
 
 .App {
-
+  /*width: 100%;*/
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  background: papayawhip;
+  height: 100vh
 }
 
 .App-navbar {
-  padding: 1rem;
+  padding: 2rem;
+  width: 100%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
