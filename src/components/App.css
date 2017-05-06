@@ -14,6 +14,7 @@ body {
 }
 
 .App-navbar {
+  color: DarkSeaGreen;
   padding: 1.5rem;
   width: 100%;
   display: flex;
@@ -22,6 +23,18 @@ body {
   align-items: center;
 }
 
-.fa-bars:hover {
+.App-navbar__title {
+  margin: 0;
+  color: DarkSeaGreen;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.settings-icon, .menu-icon, .App-navbar__title {
+  transition: 0.5s;
   cursor: pointer;
+}
+
+.settings-icon:hover, .menu-icon:hover, .App-navbar__title:hover {
+  color: DarkOliveGreen;
 }
