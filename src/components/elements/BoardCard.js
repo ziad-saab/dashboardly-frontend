@@ -9,7 +9,7 @@ export default class BoardCard extends Component {
   }
 
   render() {
-    let { title, description, updatedAt, id } = this.props
+    let { title, description, id } = this.props
     return (
       <Link to={`/boards/${id}`}>
         <div className="board-card">

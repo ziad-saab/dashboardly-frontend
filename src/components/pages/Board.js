@@ -19,22 +19,20 @@ export default class Board extends Component {
   }
   
   fetchBoardData = () => {
-    console.log(this.props.params)
       api.getBoard(this.props.params.id)
-      .then(({body}) => {
-        console.log(body)
+      .then(res => {
         this.setState({
-          title: body.title,
-          description: body.description,
-          bookmarks: body.bookmarks,
-          updatedAt: body.title
+          title: res.body.title,
+          description: res.body.description,
+          bookmarks: res.body.bookmarks,
+          updatedAt: res.body.title
         })
       })
       .catch(console.error)
   }
 
   render() {
-    let {bookmarks} = this.state
+    let { bookmarks } = this.state
     return (
       <div className="board">
         { bookmarks.map(b =>

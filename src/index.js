@@ -5,17 +5,10 @@ import App from './components/App';
 import Home from './components/pages/Home';
 import Login from './components/pages/Login';
 import SignUp from './components/pages/SignUp';
-import CreateBoard from './components/modals/CreateBoard';
 import Board from './components/pages/Board';
-
-import auth from './auth'
 
 import './index.css';
 
-function requireAuth(nextState, replaceState) {
-  if (!auth.loggedIn())
-    replaceState({ nextPathname: nextState.location.pathname }, '/login')
-}
 
 const routes = (
     <Router history={browserHistory}>

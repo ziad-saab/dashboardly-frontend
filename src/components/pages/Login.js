@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import api from '../../api';
+import auth from '../../auth'
 import './Login.css';
 
 const ENTER = 13;
@@ -10,16 +10,9 @@ export default class Login extends Component {
     // deep destructuring equivalent to (let email = this.refs.email.value;)
     let { email: {value: email}, password: {value: password} } = this.refs;
     if (email && password) {
-      api.requestLogin(email, password)
-      .then(res => {
-        if (res) {
-          let token = res.body.token
-          this.props.router.push('/')
-        }
-        else {
-          console.error("error logging in")
-        }
-      })
+      auth.login(email, password)
+      .then(res => this.props.router.push('/'))
+      .catch(console.error)
     }
     else {
       this.setState({ error: "Please enter an email and password"})

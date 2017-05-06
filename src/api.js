@@ -9,7 +9,13 @@ class Api {
     .send({ email, password })
   )
   
-  getListOfBoards = (page, count) => (
+  requestLogout = (token) => (
+    superagent
+    .delete(`${API_HOST}/auth/sessions`)
+    .set('Authorization', `token ${token}`)
+  )
+  
+  getBoardsList = (page, count) => (
     superagent
     .get(`${API_HOST}/boards`)
   )
