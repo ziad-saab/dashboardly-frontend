@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router';
 import './BookmarkCard.css';
 
 export default class BookmarkCard extends Component {

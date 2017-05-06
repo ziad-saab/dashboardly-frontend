@@ -14,13 +14,15 @@ export default class Board extends Component {
     };
   }
   
-  componentDidMout() {
-    this.fetchBoardData
+  componentDidMount() {
+    this.fetchBoardData()
   }
   
   fetchBoardData = () => {
+    console.log(this.props.params)
       api.getBoard(this.props.params.id)
       .then(({body}) => {
+        console.log(body)
         this.setState({
           title: body.title,
           description: body.description,

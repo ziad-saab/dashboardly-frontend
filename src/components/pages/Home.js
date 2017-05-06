@@ -21,6 +21,7 @@ export default class Home extends Component {
     .then(res => {
       this.setState({ boards: res.body.boards })
     })
+    .catch(console.error)
   }
 
   render() {
