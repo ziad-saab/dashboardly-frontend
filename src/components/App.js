@@ -8,11 +8,18 @@ class App extends Component {
     this.state = { isMenuOpen: false }
   }
   
+  closeMenu = () => this.setState({ isMenuOpen: false })
+  
   render() {
     let {isMenuOpen} = this.state
     return (
       <div className="App">
-        {isMenuOpen ? <Menu/> : null}
+        <div className="App-navbar">
+          <i className="fa fa-bars fa-2x" onClick={()=>this.setState({ isMenuOpen: !isMenuOpen })}/>
+        </div>
+
+
+        {isMenuOpen ? <Menu closeMenu={this.closeMenu}/> : null}
         {this.props.children}
 
         <div className="App-header">

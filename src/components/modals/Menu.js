@@ -1,18 +1,24 @@
 import React, {Component} from 'react';
+import onClickOutside from 'react-onclickoutside'
 import './Menu.css';
 
-export default class Menu extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+
+class Menu extends Component {
+  
+  handleClickOutside = () => {
+    this.props.closeMenu();
   }
 
   render() {
     return (
-      <div>
-        <h1>Title</h1>
+      <div className="menu">
+        <div className="menu__header">
+          <img src="" alt="profile-pic" className="menu__avatar"/>
+        </div>
       </div>
     );
   }
 
 }
+
+export default onClickOutside(Menu);

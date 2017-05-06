@@ -1,0 +1,20 @@
+.menu {
+  width: 270px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: lightgrey;
+}
+
+.menu__header {
+  height: 160px;
+}
+
+.menu__avatar {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background: green;
+  margin: 1rem;
+}
