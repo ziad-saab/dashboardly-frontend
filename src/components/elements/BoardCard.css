@@ -1,8 +1,9 @@
 .board-card {
   background: white;
-  padding: 1rem;
+  padding: 0.5rem;
   border: 1px solid lightgrey;
   border-radius: 5px;
-  max-width: 480px;
+  width: 360px;
+  /*max-width: 480px;*/
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }

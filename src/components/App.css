@@ -6,7 +6,6 @@ body {
 }
 
 .App {
-  /*width: 100%;*/
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -15,10 +14,14 @@ body {
 }
 
 .App-navbar {
-  padding: 2rem;
+  padding: 1.5rem;
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+}
+
+.fa-bars:hover {
+  cursor: pointer;
 }

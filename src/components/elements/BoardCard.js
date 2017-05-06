@@ -11,7 +11,7 @@ export default class BoardCard extends Component {
     let { title, description, updatedAt } = this.props
     return (
       <div className="board-card">
-        <h1>{ title }</h1>
+        <h2>{ title }</h2>
         <p>{ description }</p>
       </div>
     );

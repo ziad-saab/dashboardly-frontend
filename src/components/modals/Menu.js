@@ -23,18 +23,26 @@ class Menu extends Component {
 
         <div className="menu__list">
 
-          <Link to="/" className="menu__item"> Home </Link>
+          <Link to="/" className="menu__item" onClick={closeMenu}>
+            Home
+          </Link>
 
           {!isLoggedIn ?
-            <Link to="/login" className="menu__item"> Login </Link>
+            <Link to="/login" className="menu__item" onClick={closeMenu}>
+              Login
+            </Link>
           : null}
 
           {!isLoggedIn ?
-            <Link to="/signup" className="menu__item"> Signup </Link>
+            <Link to="/signup" className="menu__item" onClick={closeMenu}>
+              Signup
+            </Link>
           : null}
 
           {isLoggedIn ?
-            <Link to="/logout" className="menu__item"> Logout </Link>
+            <Link to="/logout" className="menu__item" onClick={closeMenu}>
+              Logout
+            </Link>
           : null}
         </div>
 
