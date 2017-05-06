@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import api from '../../api'
+import api from '../../api';
+import BoardCard from '../elements/BoardCard';
 import './Home.css';
 
 export default class Home extends Component {
@@ -12,14 +13,22 @@ export default class Home extends Component {
   
   componentDidMount() {
     api.getListOfBoards()
-    .then(boards => this.setState({ boards }))
+    .then(res => {
+      this.setState({ boards: res.body.boards })
+    })
   }
 
   render() {
     let { boards } = this.state
     return (
       <div className="home">
-        { boards.map( b => <div>{b.title} {b.description}</div>) }
+        { boards.map(b =>
+          <BoardCard key={b.id}
+            title={b.title}
+            description={b.description}
+            updatedAt={b.updatedAt}
+          />
+        )}
       </div>
     );
   }

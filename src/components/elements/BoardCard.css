@@ -1,0 +1,7 @@
+.board-card {
+  background: ffffffff&noise=626262&density=24&opacity=6;
+  padding: 1rem;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  max-width: 480px;
+}
