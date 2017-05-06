@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router';
 import './BoardCard.css';
 
 export default class BoardCard extends Component {
@@ -8,12 +9,14 @@ export default class BoardCard extends Component {
   }
 
   render() {
-    let { title, description, updatedAt } = this.props
+    let { title, description, updatedAt, id } = this.props
     return (
-      <div className="board-card">
-        <h2>{ title }</h2>
-        <p>{ description }</p>
-      </div>
+      <Link to={`/boards/${id}`}>
+        <div className="board-card">
+          <h2>{ title }</h2>
+          <p>{ description }</p>
+        </div>
+      </Link>
     );
   }
 

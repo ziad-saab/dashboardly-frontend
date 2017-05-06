@@ -3,6 +3,7 @@ import api from '../../api';
 import BoardCard from '../elements/BoardCard';
 import './Home.css';
 
+
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +13,10 @@ export default class Home extends Component {
   }
   
   componentDidMount() {
+    this._fetchBoards();
+  }
+  
+  _fetchBoards = () => {
     api.getListOfBoards()
     .then(res => {
       this.setState({ boards: res.body.boards })
@@ -23,7 +28,9 @@ export default class Home extends Component {
     return (
       <div className="home">
         { boards.map(b =>
-          <BoardCard key={b.id}
+          <BoardCard
+            key={b.id}
+            id={b.id}
             title={b.title}
             description={b.description}
             updatedAt={b.updatedAt}

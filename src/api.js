@@ -14,6 +14,11 @@ class Api {
     .get(`${API_HOST}/boards`)
   )
   
+  getBoard = (id) => (
+    superagent
+    .get(`${API_HOST}/board/${id}`)
+  )
+  
 }
 
 export default new Api();

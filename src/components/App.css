@@ -5,6 +5,11 @@ body {
   margin: 0px;
 }
 
+a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
 .App {
   display: flex;
   flex-flow: column;
