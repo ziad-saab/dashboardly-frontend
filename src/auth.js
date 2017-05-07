@@ -20,7 +20,7 @@ module.exports = {
     .then(res => delete localStorage.token)
   },
 
-  loggedIn() {
+  isLoggedIn() {
     return !!localStorage.token
   },
   

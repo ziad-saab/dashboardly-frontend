@@ -1,0 +1,14 @@
+.add-button {
+  background: green;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  transition: 0.5s;
+  box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.65);
+}
+
+.add-button:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
