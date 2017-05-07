@@ -13,7 +13,7 @@ class Menu extends Component {
 
   render() {
     let { closeMenu, show } = this.props
-    const isLoggedIn = auth.loggedIn()
+    const isLoggedIn = auth.isLoggedIn()
     return (
       <div className={`menu ${show?"show":""}`}>
 

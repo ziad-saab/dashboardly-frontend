@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import api from '../../api';
 import BoardCard from '../elements/BoardCard';
 import AddButton from '../elements/AddButton';
+import auth from '../../auth';
 import './Home.css';
 
 
@@ -38,7 +39,7 @@ export default class Home extends Component {
             updatedAt={b.updatedAt}
           />
         )}
-        {auth.isLoggedIn ? <AddButton /> : null}
+        {auth.isLoggedIn() ? <AddButton /> : null}
       </div>
     );
   }
