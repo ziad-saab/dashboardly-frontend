@@ -14,7 +14,7 @@ module.exports = {
   signup(username, email, password) {
     return api.signup(username, email, password);
   },
-  
+
   getToken() {
     return localStorage.token
   },
@@ -26,6 +26,5 @@ module.exports = {
 
   isLoggedIn() {
     return !!localStorage.token
-  },
-
+  }
 }

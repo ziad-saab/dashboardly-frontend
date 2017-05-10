@@ -8,6 +8,10 @@ export default class BoardCard extends Component {
     this.state = {};
   }
 
+  _handleEditBoard = () => {
+
+  }
+
   render() {
     let { title, description, id } = this.props
     return (
@@ -15,6 +19,10 @@ export default class BoardCard extends Component {
         <div className="board-card">
           <h2>{ title }</h2>
           <p>{ description }</p>
+
+          <button className="boardEditButton" onClick={this._handleEditBoard}>
+            Edit
+          </button>
         </div>
       </Link>
     );

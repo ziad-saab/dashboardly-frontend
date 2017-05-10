@@ -1,5 +1,10 @@
-import superagent from 'superagent'
+import defaults from 'superagent-defaults'
 import { API_HOST } from './config'
+
+const superagent = defaults()
+
+superagent
+  .set('Authorization', `token ${localStorage.token ? localStorage.token : null}`)
 
 class Api {
   // new code
@@ -30,13 +35,12 @@ class Api {
     superagent
     .get(`${API_HOST}/boards/${id}`)
   )
-  // *******************
-  // this is not working
+
   createBoard = (title, description) => {
-    console.log('api title ' + title, 'api description ' + description)
     superagent
     .post(`${API_HOST}/boards`)
     .send({title, description})
+    .catch(err => console.error(err))
   }
 
   getBookmarks = (boardId) => (
@@ -44,6 +48,12 @@ class Api {
     .get(`${API_HOST}/boards/${boardId}/bookmarks`)
   )
 
+  createBookmark = (title, url) => {
+    superagent
+    .post(`${API_HOST}/boards/:id/bookmarks`)
+    .send({title, description})
+    .catch(err => console.error(err))
+  }
 }
 
 export default new Api();
