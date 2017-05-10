@@ -19,9 +19,9 @@ export default class SignUp extends Component {
       }
     } = this.refs;
 
-    if (username && email && pasword) {
+    if (username && email && password) {
       auth.signup(username, email, password)
-      .then(res => this.props.router.push('/'))
+      .then(res => this.props.router.push('/login'))
       .catch(console.error);
     }
     else {
@@ -41,13 +41,13 @@ export default class SignUp extends Component {
   render() {
     return (
       <div className="signup">
-        <input type="text" ref="username"
+        <input type="text" ref="username" placeholder="Username"
           onKeyUp={this._handleTyping}
         />
-        <input type="text" ref="email"
+        <input type="text" ref="email" placeholder="Email"
           onKeyUp={this._handleTyping}
         />
-        <input type="password" ref="password"
+        <input type="password" ref="password" placeholder="Password"
           onKeyUp={this._handleTyping}
         />
 
