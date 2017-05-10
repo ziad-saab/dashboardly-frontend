@@ -11,6 +11,16 @@ module.exports = {
     }
   },
 
+  signup(email, pass) {
+    if(!email || !pass){
+      throw new Error('Please enter valid email or password')
+    }
+    else {
+      console.log(email, pass, 'test2!!!!!!!')
+      return api.requestSignup(email, pass);
+    }
+  },
+
   getToken() {
     return localStorage.token
   },
@@ -23,5 +33,5 @@ module.exports = {
   isLoggedIn() {
     return !!localStorage.token
   },
-  
+
 }
