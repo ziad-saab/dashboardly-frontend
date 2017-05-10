@@ -18,7 +18,7 @@ export default class Login extends Component {
       this.setState({ error: "Please enter an email and password"})
     }
   }
-  
+
   _handleTyping = (e) => {
     if (this.state && this.state.error) {
       this.setState({ error: null })
