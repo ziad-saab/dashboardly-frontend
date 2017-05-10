@@ -1,4 +1,3 @@
 Questions:
 
-1. api.createBoard in api.js and CreateBoard.js
-not working
+get id for bookmarks

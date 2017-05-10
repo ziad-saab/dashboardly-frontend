@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import api from '../../api';
 
-import './CreateBoookmark.css';
+import './CreateBookmark.css';
 
-export default class CreateBoookmark extends Component {
+export default class CreateBookmark extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -19,7 +19,8 @@ export default class CreateBoookmark extends Component {
       }
     } = this.refs;
 
-    api.createBookmark(title, url);
+    api.createBookmark(title, url, this.props.id)
+    .then(this.props.updateBookmarks);
   }
 
   render() {

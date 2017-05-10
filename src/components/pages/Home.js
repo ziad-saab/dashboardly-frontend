@@ -47,7 +47,7 @@ export default class Home extends Component {
         }
 
         {this.state.showCreateModal
-          ? <CreateBoard />
+          ? <CreateBoard updateBoards={this._fetchBoards}/>
           : null
         }
       </div>

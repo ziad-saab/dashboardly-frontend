@@ -8,12 +8,11 @@ export default class BookmarkCard extends Component {
   }
 
   render() {
-    let { title, description, url } = this.props
+    let { title, url } = this.props
     return (
       <a className="bookmark-card" href={url}>
         <div>
           <h2>{ title }</h2>
-          <p>{ description }</p>
         </div>
         <img src={""} alt={title}/>
       </a>

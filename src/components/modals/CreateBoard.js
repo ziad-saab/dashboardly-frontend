@@ -19,9 +19,8 @@ export default class CreateBoard extends Component {
         }
     } = this.refs;
 
-    api.createBoard(title, description);
-    //.then(this.props.router.push('/')) // gives an error saying cannot use then on undefined
-    //how to redirect?
+    api.createBoard(title, description)
+    .then(this.props.updateBoards);
   }
 
   render() {
