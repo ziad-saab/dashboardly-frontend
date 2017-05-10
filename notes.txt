@@ -1,3 +1,22 @@
 Questions:
 
-get id for bookmarks
+updateBoards
+CreateBoard, sends data
+api sends data, id and data object
+server-side update function not receiving body values, sends {}
+
+also check the repetition of _fetchBoards for create and update
+
+
+change the delete boards function to also delete all bookmarks
+associated with that board
+
+when creating a board, the form stays open with the previously-created
+board's info and when submitted it creates a new board again
+
+same for bookmarks for some reason
+
+hitting enter to create a board or bookmark doesnt work
+
+there is no page for bookmarks, so how to get the id?
+do it on the modify modal?
