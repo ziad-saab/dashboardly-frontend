@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import api from '../../api';
 import BookmarkCard from '../elements/BookmarkCard';
-import auth from '../../auth';
+//import auth from '../../auth';
 import './Board.css';
 
 export default class Board extends Component {
@@ -14,11 +14,11 @@ export default class Board extends Component {
       updatedAt: ""
     };
   }
-  
+
   componentDidMount() {
     this.fetchBoardData()
   }
-  
+
   fetchBoardData = () => {
       Promise.all([
         api.getBoard(this.props.params.id),

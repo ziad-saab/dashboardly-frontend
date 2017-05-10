@@ -9,6 +9,7 @@ class Menu extends Component {
   _handleLogout = () => {
     auth.logout()
     .then(res => this.props.router.push('/'))
+    .then(this.props.closeMenu)
     .catch(console.error);
   }
 
@@ -45,9 +46,9 @@ class Menu extends Component {
           : null}
 
           {isLoggedIn ?
-            <Link to="/" className="menu__item" onClick={this._handleLogout}>
+            <div className="menu__item" onClick={this._handleLogout}>
               Logout
-            </Link>
+            </div>
           : null}
         </div>
 

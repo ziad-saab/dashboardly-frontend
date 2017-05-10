@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import api from '../../api';
 import BoardCard from '../elements/BoardCard';
 import AddButton from '../elements/AddButton';
+import CreateBoard from '../modals/CreateBoard';
 import auth from '../../auth';
 import './Home.css';
 
@@ -10,14 +11,15 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      boards: []
+      boards: [],
+      showCreateModal: false
     };
   }
-  
+
   componentDidMount() {
     this._fetchBoards();
   }
-  
+
   _fetchBoards = () => {
     api.getBoardsList()
     .then(res => {
@@ -39,7 +41,15 @@ export default class Home extends Component {
             updatedAt={b.updatedAt}
           />
         )}
-        {auth.isLoggedIn() ? <AddButton /> : null}
+        {auth.isLoggedIn()
+          ? <AddButton action={()=>this.setState({showCreateModal: true})}/>
+          : null
+        }
+
+        {this.state.showCreateModal
+          ? <CreateBoard />
+          : null
+        }
       </div>
     );
   }

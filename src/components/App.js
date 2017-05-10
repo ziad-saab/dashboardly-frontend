@@ -8,9 +8,9 @@ class App extends Component {
     super(props)
     this.state = { isMenuOpen: false }
   }
-  
+
   closeMenu = () => this.setState({ isMenuOpen: false })
-  
+
   render() {
     let {isMenuOpen} = this.state
     return (
@@ -23,7 +23,7 @@ class App extends Component {
           <i className="fa fa-cog fa-2x settings-icon"/>
         </div>
 
-        <Menu show={isMenuOpen} closeMenu={this.closeMenu}/>
+        <Menu show={isMenuOpen} closeMenu={this.closeMenu} router={this.props.router}/>
 
         {this.props.children}
 

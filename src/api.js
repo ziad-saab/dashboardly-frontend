@@ -30,6 +30,14 @@ class Api {
     superagent
     .get(`${API_HOST}/boards/${id}`)
   )
+  // *******************
+  // this is not working
+  createBoard = (title, description) => {
+    console.log('api title ' + title, 'api description ' + description)
+    superagent
+    .post(`${API_HOST}/boards`)
+    .send({title, description})
+  }
 
   getBookmarks = (boardId) => (
     superagent

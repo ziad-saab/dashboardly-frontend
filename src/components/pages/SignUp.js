@@ -6,6 +6,8 @@ import './SignUp.css';
 const ENTER = 13;
 
 export default class SignUp extends Component {
+  
+
   _handleSignup = () => {
     let {
       username: {
@@ -52,6 +54,11 @@ export default class SignUp extends Component {
         />
 
         <button onClick={this._handleSignup}>Sign Up</button>
+
+       {this.state && this.state.error ?
+          <p>{this.state.error}</p>
+          : null
+        }
       </div>
     );
   }
