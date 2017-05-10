@@ -10,7 +10,13 @@ module.exports = {
       .then(res => localStorage.token = res.body.token)
     }
   },
-
+  // new code
+  signup(username, email, password) {
+    return api.signup(username, email, password);
+    // do anything with response here?
+    // Redirect to login page? Where to do that? 
+  },
+  // *****
   getToken() {
     return localStorage.token
   },
@@ -23,5 +29,5 @@ module.exports = {
   isLoggedIn() {
     return !!localStorage.token
   },
-  
+
 }
