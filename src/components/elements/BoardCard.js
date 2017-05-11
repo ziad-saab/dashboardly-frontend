@@ -13,20 +13,11 @@ export default class BoardCard extends Component {
     };
   }
 
-  //easier way of doing this? it's also in home.js
-  _fetchBoards = () => {
-    api.getBoardsList()
-    .then(res => {
-      this.setState({ boards: res.body.boards })
-    })
-    .catch(console.error)
-  }
-
   _handleDelete = () => {
     api.deleteBoard(this.props.id) // id is the board id
-    .then(this._fetchBoards); // this doesn't update the boards properly
+    //.then(this.props.updateBoards);
   }
-
+//updateBoards={this.props.updateBoards}
   render() {
     let { title, description, id } = this.props
     return (
@@ -40,8 +31,6 @@ export default class BoardCard extends Component {
         <button className="boardEditButton" onClick={()=>this.setState({showCreateModal: true})}>
           Edit
         </button>
-        {/* Make sure deleting this will also delete
-          all bookmarks associated with it as well */}
         <button className="boardDeleteButton" onClick={this._handleDelete}>
           Delete
         </button>
@@ -51,7 +40,7 @@ export default class BoardCard extends Component {
             boardId={id}
             title={title}
             description={description}
-            updateBoards={this._fetchBoards}
+
             />
           : null
         }

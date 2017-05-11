@@ -43,7 +43,7 @@ export default class CreateBookmark extends Component {
     }
 
     api.createBookmark(title, bookmarkUrl, this.props.id)
-    .then(this.props.updateBookmarks);
+    //.then(this.props.updateBookmarks);
   }
 
   render() {

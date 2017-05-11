@@ -34,7 +34,7 @@ export default class BookmarkCard extends Component {
             //boardId={id}
             title={title}
             url={url}
-            // updateBoards={this._fetchBoards}
+            // updateBookmarks={this._fetchBoards}
             />
           : null
         }
