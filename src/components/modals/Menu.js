@@ -6,7 +6,13 @@ import './Menu.css';
 
 
 class Menu extends Component {
-  
+  _handleLogout = () => {
+    auth.logout()
+    .then(res => this.props.router.push('/'))
+    .then(this.props.closeMenu)
+    .catch(console.error);
+  }
+
   handleClickOutside = () => {
     this.props.closeMenu();
   }
@@ -40,9 +46,9 @@ class Menu extends Component {
           : null}
 
           {isLoggedIn ?
-            <Link to="/logout" className="menu__item" onClick={closeMenu}>
+            <div className="menu__item" onClick={this._handleLogout}>
               Logout
-            </Link>
+            </div>
           : null}
         </div>
 

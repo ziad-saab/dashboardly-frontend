@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import api from '../../api';
 import BookmarkCard from '../elements/BookmarkCard';
 import auth from '../../auth';
+import AddButton from '../elements/AddButton';
+import CreateBookmark from '../modals/CreateBookmark';
+
 import './Board.css';
 
 export default class Board extends Component {
@@ -14,11 +17,11 @@ export default class Board extends Component {
       updatedAt: ""
     };
   }
-  
+
   componentDidMount() {
     this.fetchBoardData()
   }
-  
+
   fetchBoardData = () => {
       Promise.all([
         api.getBoard(this.props.params.id),
@@ -47,6 +50,15 @@ export default class Board extends Component {
             url={b.url}
           />
         )}
+        {auth.isLoggedIn()
+          ? <AddButton action={()=>this.setState({showCreateModal: true})}/>
+          : null
+        }
+
+        {this.state.showCreateModal
+          ? <CreateBookmark id={this.props.params.id} updateBookmarks={this.fetchBoardData}/>
+          : null
+        }
       </div>
     );
   }
