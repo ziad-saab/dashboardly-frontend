@@ -5,6 +5,10 @@ import './Login.css';
 const ENTER = 13;
 
 export default class Login extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
 
   _handleLogin = () => {
     // deep destructuring equivalent to (let email = this.refs.email.value;)
@@ -18,7 +22,7 @@ export default class Login extends Component {
       this.setState({ error: "Please enter an email and password"})
     }
   }
-  
+
   _handleTyping = (e) => {
     if (this.state && this.state.error) {
       this.setState({ error: null })
@@ -31,13 +35,15 @@ export default class Login extends Component {
   render() {
     return (
       <div className="login">
-        <input type="text" ref="email"
-          onKeyUp={this._handleTyping}
-        />
-        <input type="password" ref="password"
-          onKeyUp={this._handleTyping}
-        />
-        <button onClick={this._handleLogin}>login</button>
+        <form onSubmit={this._handleLogin}>
+          <input type="text" ref="email"
+            onKeyUp={this._handleTyping}
+          />
+          <input type="password" ref="password"
+            onKeyUp={this._handleTyping}
+          />
+          <button>login</button>
+        </form>
       </div>
     );
   }
