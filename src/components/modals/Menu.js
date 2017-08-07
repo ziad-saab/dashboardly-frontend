@@ -6,7 +6,30 @@ import './Menu.css';
 
 
 class Menu extends Component {
-  
+
+
+
+constructor(){
+  super()
+  this.state ={image:""}
+}
+
+getData= () => {
+  fetch(`https://private-739305-dashboardly.apiary-mock.com/auth/me`)
+  .then(data => data.json())
+  .then(data=> {
+    console.log(data.avatar)
+    this.setState({
+      image: data.avatarUrl
+    })
+  })
+}
+
+//called after the render
+componentDidMount(){
+  this.getData()
+}
+
   handleClickOutside = () => {
     this.props.closeMenu();
   }
@@ -18,7 +41,7 @@ class Menu extends Component {
       <div className={`menu ${show?"show":""}`}>
 
         <div className="menu__header">
-          <img src="" alt="profile-pic" className="menu__avatar"/>
+          <img src= {this.state.image} alt="profile-pic" className="menu__avatar"/>
         </div>
 
         <div className="menu__list">

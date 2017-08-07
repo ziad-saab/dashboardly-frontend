@@ -5,10 +5,7 @@ import './Login.css';
 const ENTER = 13;
 
 export default class Login extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+
 
   _handleLogin = () => {
     // deep destructuring equivalent to (let email = this.refs.email.value;)

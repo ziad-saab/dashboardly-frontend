@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import './SignUp.css';
 
+
+
+const url="https://private-739305-dashboardly.apiary-mock.com/";
+
 export default class SignUp extends Component {
+
 
   _handleSignup = (e) => {
     e.preventDefault();
@@ -19,8 +24,13 @@ export default class SignUp extends Component {
    }
 
    return (
-     fetch(`http://localhost:3000/auth/users`, fetchConfig)
-     .then( res => this.props.router.push('/login'))
+     fetch(`${url}/auth/users`, fetchConfig)
+     .then( function(res){
+       console.log(res)
+       this.props.router.push('/login')
+
+     })
+
      .catch( error => console.log(error.stack))
    )
    }
