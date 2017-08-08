@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import auth from '../../auth';
 import './Login.css';
-
+import {API_HOST} from '../../config';
 const ENTER = 13;
 
 export default class Login extends Component {
 
-  _handleLogin = () => {
+  _handleLogin = (e) => {
     // deep destructuring equivalent to (let email = this.refs.email.value;)
     let user =  {
       email: this.refs.email.value,

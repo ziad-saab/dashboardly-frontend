@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CreateBoard from '../modals/CreateBoard';
-import Board from '../pages/Board';
+
 
 export default class AddButton extends Component {
   constructor(props) {

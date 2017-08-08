@@ -12,7 +12,8 @@ export default class Board extends Component {
       title: "",
       description: "",
       bookmarks: [],
-      updatedAt: ""
+      updatedAt: "",
+	  toggle: false
     };
   }
 
