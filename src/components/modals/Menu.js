@@ -15,8 +15,6 @@ class Menu extends Component {
       image : "hello"
     }
   }
-
-
   getImage = () => {
     fetch(`${API_HOST}/auth/me`)
     .then( data => data.json())
@@ -27,12 +25,24 @@ class Menu extends Component {
     })
     .catch(e => console.log(e))
   }
-
   componentDidMount() {
     this.getImage();
   }
-
-
+   _logout = (e) => {
+	  e.preventDefault();
+      auth.logout()
+      .then(r => {
+          console.log(r);
+          let fetchObj = {
+              method: "DELETE",
+              body: {
+                  token: r
+              }
+          }
+          fetch(`${API_HOST}/auth/sessions`, fetchObj)
+            .then( res => this.props.router.push('/login'))
+      })
+  }
   handleClickOutside = () => {
     this.props.closeMenu();
   }
@@ -65,12 +75,11 @@ class Menu extends Component {
           : null}
 
           {isLoggedIn ?
-			<div onClick={this._logout()}>
+			<div onClick={ e => this._logout(e)}>
 				Logout
 			</div>
           : null}
         </div>
-
       </div>
     );
   }
