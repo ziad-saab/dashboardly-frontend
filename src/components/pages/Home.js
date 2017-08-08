@@ -7,19 +7,19 @@ import './Home.css';
 import CreateBoard from '../modals/CreateBoard'
 
 
+const display = {
+  display: 'block'
+};
+const hide = {
+  display: 'none'
+};
+
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      boards: [],
-      toggle: false
+      boards: []
     };
-  }
-
-  toggle = (event) => {
-      this.setState(prevState => ({
-        toggle: !prevState.toggle
-      }));
   }
 
   componentDidMount() {
