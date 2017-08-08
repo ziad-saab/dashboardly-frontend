@@ -6,15 +6,14 @@ export default class CreateBoard extends Component {
     return (
       <div>
         <h1>Title</h1>
-        <form onSubmit={this._createBoard}>
+        <form>
           <p>Title</p>
           <input type="text" ref="title"/>
           <p>Description</p>
           <input type="text" ref="description"/>
-          <button>Create</button>
+          <button onClick={this.props.click}>Create</button>
         </form>
       </div>
     );
   }
-
 }

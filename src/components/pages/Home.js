@@ -23,13 +23,15 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
+	console.log('this works')
     this._fetchBoards();
   }
 
   _fetchBoards = () => {
     api.getBoardsList()
     .then(res => {
-      this.setState({ boards: res.body.boards })
+	  console.log(res.body)
+      this.setState({ boards: res.body })
     })
     .catch(console.error)
   }
@@ -37,8 +39,6 @@ export default class Home extends Component {
   _clicked = () => {
     alert("hello world")
   }
-
-
   render() {
     let { boards } = this.state
     return (

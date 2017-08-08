@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import onClickOutside from 'react-onclickoutside';
 import auth from '../../auth';
+import {API_HOST} from '../../config';
 import './Menu.css';
-import { API_HOST } from '../../config';
-
 
 
 class Menu extends Component {
@@ -14,8 +13,6 @@ class Menu extends Component {
       image : "hello"
     }
   }
-
-
   getImage = () => {
     fetch(`${API_HOST}/auth/me`)
     .then( data => data.json())
@@ -27,16 +24,30 @@ class Menu extends Component {
     })
     .catch(e => console.log(e))
   }
-
   componentDidMount() {
     this.getImage();
   }
-
+  //  _logout = (e) => {
+	//   e.preventDefault();
+  //     auth.logout()
+  //     .then(r => {
+  //         console.log(r);
+  //         let fetchObj = {
+  //             method: "DELETE",
+  //             body: {
+  //                 token: r
+  //             }
+  //         }
+  //         fetch(`${API_HOST}/auth/sessions`, fetchObj)
+  //           .then( res => this.props.router.push('/login'))
+  //     })
+  // }
 
   handleClickOutside = () => {
-    this.props.closeMenu();
+	if(this.props.show === true) {
+		this.props.closeMenu();
+	}
   }
-
   render() {
     let { closeMenu, show } = this.props
     const isLoggedIn = auth.isLoggedIn()
@@ -66,16 +77,14 @@ class Menu extends Component {
           : null}
 
           {isLoggedIn ?
-            <Link to="/logout" className="menu__item" onClick={closeMenu}>
-              Logout
-            </Link>
+			<div onClick={ e => this._logout(e)}>
+				Logout
+			</div>
           : null}
         </div>
-
       </div>
     );
   }
-
 }
 
 export default onClickOutside(Menu);

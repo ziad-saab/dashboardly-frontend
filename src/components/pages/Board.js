@@ -3,7 +3,7 @@ import api from '../../api';
 import BookmarkCard from '../elements/BookmarkCard';
 import auth from '../../auth';
 import './Board.css';
-
+import AddButton from '../elements/AddButton';
 
 export default class Board extends Component {
   constructor(props) {
@@ -12,11 +12,13 @@ export default class Board extends Component {
       title: "",
       description: "",
       bookmarks: [],
-      updatedAt: ""
+      updatedAt: "",
+	  toggle: false
     };
   }
 
   componentDidMount() {
+	console.log('working')
     this.fetchBoardData()
   }
 
@@ -37,7 +39,7 @@ export default class Board extends Component {
 
   render() {
     let { bookmarks } = this.state
-    console.log(this.state.bookmarks.id)
+
     return (
       <div className="board">
 
@@ -51,6 +53,7 @@ export default class Board extends Component {
           />
         )}
 
+        <AddButton/>
       </div>
     );
   }

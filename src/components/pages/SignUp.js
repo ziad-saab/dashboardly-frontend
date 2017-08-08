@@ -4,14 +4,14 @@ import { API_HOST } from '../../config';
 
 
 export default class SignUp extends Component {
-constructor(props) {
-  super();
-}
-
+	constructor(props) {
+		super();
+		this.state = {};
+	}
 
   _handleSignup = (e) => {
     e.preventDefault();
-    console.log(this.refs.email.value)
+    //console.log(this.refs.email.value)
     let fetchConfig = {
       method: 'POST',
       mode: 'cors',
@@ -32,8 +32,7 @@ constructor(props) {
      })
      .catch( error => console.log("ERROR:", error.stack))
    )
-   }
-
+  }
   render() {
     return (
       <div>
@@ -46,5 +45,4 @@ constructor(props) {
       </div>
     );
   }
-
 }

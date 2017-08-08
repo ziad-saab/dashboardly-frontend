@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
+import EditButton from './EditButton'
+import DeleteButton from './DeleteButton'
 import './BoardCard.css';
 
 export default class BoardCard extends Component {
@@ -7,7 +9,9 @@ export default class BoardCard extends Component {
     super(props);
     this.state = {};
   }
-
+  _handleDelete = () => {
+	  //call fetch.delete on this board
+  }
   render() {
     let { title, description, id } = this.props
     return (
@@ -16,8 +20,9 @@ export default class BoardCard extends Component {
           <h2>{ title }</h2>
           <p>{ description }</p>
         </div>
+		<EditButton />
+		<DeleteButton />
       </Link>
     );
   }
-
 }
