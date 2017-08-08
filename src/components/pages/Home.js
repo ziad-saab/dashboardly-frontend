@@ -4,20 +4,28 @@ import BoardCard from '../elements/BoardCard';
 import AddButton from '../elements/AddButton';
 import auth from '../../auth';
 import './Home.css';
+import CreateBoard from '../modals/CreateBoard'
 
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      boards: []
+      boards: [],
+      toggle: false
     };
   }
-  
+
+  toggle = (event) => {
+      this.setState(prevState => ({
+        toggle: !prevState.toggle
+      }));
+  }
+
   componentDidMount() {
     this._fetchBoards();
   }
-  
+
   _fetchBoards = () => {
     api.getBoardsList()
     .then(res => {
@@ -25,6 +33,11 @@ export default class Home extends Component {
     })
     .catch(console.error)
   }
+
+  _clicked = () => {
+    alert("hello world")
+  }
+
 
   render() {
     let { boards } = this.state
@@ -39,7 +52,7 @@ export default class Home extends Component {
             updatedAt={b.updatedAt}
           />
         )}
-        {auth.isLoggedIn() ? <AddButton /> : null}
+        {auth.isLoggedIn() ? <AddButton clicked={this.toggle}/> : null}
       </div>
     );
   }
