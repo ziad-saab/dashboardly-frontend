@@ -7,6 +7,7 @@ import Login from './components/pages/Login';
 import SignUp from './components/pages/SignUp';
 import Board from './components/pages/Board';
 
+
 import './index.css';
 
 

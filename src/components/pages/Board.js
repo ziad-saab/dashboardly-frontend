@@ -4,6 +4,7 @@ import BookmarkCard from '../elements/BookmarkCard';
 import auth from '../../auth';
 import './Board.css';
 
+
 export default class Board extends Component {
   constructor(props) {
     super(props);
@@ -14,11 +15,11 @@ export default class Board extends Component {
       updatedAt: ""
     };
   }
-  
+
   componentDidMount() {
     this.fetchBoardData()
   }
-  
+
   fetchBoardData = () => {
       Promise.all([
         api.getBoard(this.props.params.id),
@@ -36,8 +37,10 @@ export default class Board extends Component {
 
   render() {
     let { bookmarks } = this.state
+    console.log(this.state.bookmarks.id)
     return (
       <div className="board">
+
         { bookmarks.map(b =>
           <BookmarkCard
             key={b.id}
@@ -47,6 +50,7 @@ export default class Board extends Component {
             url={b.url}
           />
         )}
+
       </div>
     );
   }

@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
 import './SignUp.css';
-
-
-
-const url="https://private-739305-dashboardly.apiary-mock.com/";
+import { API_HOST } from '../../config';
 
 export default class SignUp extends Component {
-
+  constructor(props) {
+    super();
+  }
 
   _handleSignup = (e) => {
     e.preventDefault();
-    console.log(this.refs.email.value)
+    //console.log(this.refs.email.value)
     let fetchConfig = {
       method: 'POST',
       mode: 'cors',
@@ -24,13 +23,11 @@ export default class SignUp extends Component {
    }
 
    return (
-     fetch(`${url}/auth/users`, fetchConfig)
-     .then( function(res){
+     fetch(`${API_HOST}/auth/users`, fetchConfig)
+     .then( res => {
        console.log(res)
        this.props.router.push('/login')
-
      })
-
      .catch( error => console.log(error.stack))
    )
    }

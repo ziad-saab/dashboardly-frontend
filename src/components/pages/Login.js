@@ -1,17 +1,20 @@
 import React, {Component} from 'react';
-import auth from '../../auth'
+import auth from '../../auth';
 import './Login.css';
 
 const ENTER = 13;
 
 export default class Login extends Component {
 
-
   _handleLogin = () => {
     // deep destructuring equivalent to (let email = this.refs.email.value;)
-    let { email: {value: email}, password: {value: password} } = this.refs;
-    if (email && password) {
-      auth.login(email, password)
+    let user =  {
+      email: this.refs.email.value,
+      password: this.refs.password.value
+    }
+    console.log(user);
+    if (user.email && user.password) {
+      auth.login(user.email, user.password)
       .then(res => this.props.router.push('/'))
       .catch(console.error)
     }
@@ -32,15 +35,15 @@ export default class Login extends Component {
   render() {
     return (
       <div className="login">
-        <form onSubmit={this._handleLogin}>
+
           <input type="text" ref="email"
             onKeyUp={this._handleTyping}
           />
           <input type="password" ref="password"
             onKeyUp={this._handleTyping}
           />
-          <button>login</button>
-        </form>
+          <button onClick={this._handleLogin}>login</button>
+
       </div>
     );
   }

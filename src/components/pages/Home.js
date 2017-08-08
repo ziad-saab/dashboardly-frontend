@@ -13,11 +13,11 @@ export default class Home extends Component {
       boards: []
     };
   }
-  
+
   componentDidMount() {
     this._fetchBoards();
   }
-  
+
   _fetchBoards = () => {
     api.getBoardsList()
     .then(res => {
@@ -30,6 +30,7 @@ export default class Home extends Component {
     let { boards } = this.state
     return (
       <div className="home">
+
         { boards.map(b =>
           <BoardCard
             key={b.id}
@@ -39,7 +40,7 @@ export default class Home extends Component {
             updatedAt={b.updatedAt}
           />
         )}
-        {auth.isLoggedIn() ? <AddButton /> : null}
+        {auth.isLoggedIn() ? <AddButton argument="createboard" /> : null}
       </div>
     );
   }
