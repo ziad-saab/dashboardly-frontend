@@ -17,6 +17,7 @@ class Menu extends Component {
     fetch(`${API_HOST}/auth/me`)
     .then( data => data.json())
     .then(r => {
+      console.log(r)
        this.setState({
          image : r.avatarUrl
        })
@@ -26,21 +27,22 @@ class Menu extends Component {
   componentDidMount() {
     this.getImage();
   }
-   _logout = (e) => {
-	  e.preventDefault();
-      auth.logout()
-      .then(r => {
-          console.log(r);
-          let fetchObj = {
-              method: "DELETE",
-              body: {
-                  token: r
-              }
-          }
-          fetch(`${API_HOST}/auth/sessions`, fetchObj)
-            .then( res => this.props.router.push('/login'))
-      })
-  }
+  //  _logout = (e) => {
+	//   e.preventDefault();
+  //     auth.logout()
+  //     .then(r => {
+  //         console.log(r);
+  //         let fetchObj = {
+  //             method: "DELETE",
+  //             body: {
+  //                 token: r
+  //             }
+  //         }
+  //         fetch(`${API_HOST}/auth/sessions`, fetchObj)
+  //           .then( res => this.props.router.push('/login'))
+  //     })
+  // }
+
   handleClickOutside = () => {
 	if(this.props.show === true) {
 		this.props.closeMenu();

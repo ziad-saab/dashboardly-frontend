@@ -18,8 +18,6 @@ const routes = (
         <Route path="/boards/:id" component={Board}/>
         <Route path="/signup" component={SignUp}/>
         <Route path="/login" component={Login}/>
-
-
       </Route>
     </Router>
 );

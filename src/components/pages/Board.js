@@ -16,7 +16,7 @@ export default class Board extends Component {
 	  toggle: false
     };
   }
-  
+
   componentDidMount() {
 	console.log('working')
     this.fetchBoardData()

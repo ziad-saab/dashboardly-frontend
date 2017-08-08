@@ -30,11 +30,6 @@ class Api {
     .get(`${API_HOST}/boards/${boardId}/bookmarks`)
   )
 
-  createBoard = (ownerId, title, description) => {
-    superagent
-    .post(`${API_HOST}/board`)
-    .send(ownerId, title, description)
-  }
 }
 
 export default new Api();

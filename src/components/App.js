@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import Menu from './modals/Menu';
 import './App.css';
 
-
 class App extends Component {
   constructor(props) {
     super(props)
