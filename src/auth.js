@@ -1,7 +1,9 @@
 import api from './api';
 
 module.exports = {
+
   login(email, pass) {
+
     if (localStorage.token) {
       throw new Error('Already logged in')
     }
@@ -23,5 +25,5 @@ module.exports = {
   isLoggedIn() {
     return !!localStorage.token
   },
-  
+
 }
