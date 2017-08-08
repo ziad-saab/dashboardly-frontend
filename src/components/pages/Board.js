@@ -3,6 +3,7 @@ import api from '../../api';
 import BookmarkCard from '../elements/BookmarkCard';
 import auth from '../../auth';
 import './Board.css';
+import Button from "../elements/AddButton"
 
 export default class Board extends Component {
   constructor(props) {
@@ -11,14 +12,22 @@ export default class Board extends Component {
       title: "",
       description: "",
       bookmarks: [],
-      updatedAt: ""
+      updatedAt: "",
+	  toggle: false
     };
   }
-  
+
   componentDidMount() {
     this.fetchBoardData()
   }
-  
+  _handleToggle = (e) => {
+	  e.preventDefault;
+
+	  console.log('ok working')
+	  this.setState({
+		  toggle: true
+	  })
+  }
   fetchBoardData = () => {
       Promise.all([
         api.getBoard(this.props.params.id),
@@ -37,7 +46,7 @@ export default class Board extends Component {
   render() {
     let { bookmarks } = this.state
     return (
-      <div className="board">
+      <div onClick={e => this._handleToggle(e)} className="board">
         { bookmarks.map(b =>
           <BookmarkCard
             key={b.id}
@@ -47,6 +56,7 @@ export default class Board extends Component {
             url={b.url}
           />
         )}
+		<Button />
       </div>
     );
   }

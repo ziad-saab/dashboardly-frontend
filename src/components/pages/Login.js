@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import auth from '../../auth'
 import './Login.css';
-
+import {API_HOST} from '../../config';
 const ENTER = 13;
 
 export default class Login extends Component {
@@ -10,10 +10,11 @@ export default class Login extends Component {
     this.state = {};
   }
 
-  _handleLogin = () => {
+  _handleLogin = (e) => {
     // deep destructuring equivalent to (let email = this.refs.email.value;)
     let { email: {value: email}, password: {value: password} } = this.refs;
     if (email && password) {
+		console.log('ok wtf')
       auth.login(email, password)
       .then(res => this.props.router.push('/'))
       .catch(console.error)
@@ -35,14 +36,14 @@ export default class Login extends Component {
   render() {
     return (
       <div className="login">
-        <form onSubmit={this._handleLogin}>
+        <form>
           <input type="text" ref="email"
             onKeyUp={this._handleTyping}
           />
           <input type="password" ref="password"
             onKeyUp={this._handleTyping}
           />
-          <button>login</button>
+          <button onClick={e => this._handleLogin(e)}>login</button>
         </form>
       </div>
     );

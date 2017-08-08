@@ -1,7 +1,16 @@
 import React from 'react';
 
-export default (props) => (
-  <div className="add-button">
-    <i className="fa fa-plus fa-2x"/>
-  </div>
-)
+
+class Button extends React.Component{
+
+ render() {
+
+	return (
+	  <a href={this.props.url} className="add-button">
+	  	<i className="fa fa-plus fa-2x"/>
+	  </a>
+  )}
+}
+
+
+export default Button;

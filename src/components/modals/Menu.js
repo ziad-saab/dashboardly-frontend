@@ -2,15 +2,29 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import onClickOutside from 'react-onclickoutside';
 import auth from '../../auth';
+import {API_HOST} from '../../config';
 import './Menu.css';
 
 
 class Menu extends Component {
-  
+
   handleClickOutside = () => {
     this.props.closeMenu();
   }
-
+  _logout = () => { //I think
+	  auth.logout()
+	  .then(r => {
+		  console.log(r);
+		  let fetchObj = {
+			  method: "DELETE",
+			  body: {
+				  token: r
+			  }
+		  }
+		  fetch(`${API_HOST}/auth/sessions`, fetchObj)
+			.then( res => this.props.router.push('/login'))
+	  })
+  }
   render() {
     let { closeMenu, show } = this.props
     const isLoggedIn = auth.isLoggedIn()
@@ -40,9 +54,9 @@ class Menu extends Component {
           : null}
 
           {isLoggedIn ?
-            <Link to="/logout" className="menu__item" onClick={closeMenu}>
-              Logout
-            </Link>
+			<div onClick={this._logout()}>
+				Logout
+			</div>
           : null}
         </div>
 
