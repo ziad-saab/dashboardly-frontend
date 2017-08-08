@@ -7,6 +7,7 @@ import Login from './components/pages/Login';
 import SignUp from './components/pages/SignUp';
 import Board from './components/pages/Board';
 
+
 import './index.css';
 
 
@@ -17,6 +18,8 @@ const routes = (
         <Route path="/boards/:id" component={Board}/>
         <Route path="/signup" component={SignUp}/>
         <Route path="/login" component={Login}/>
+
+
       </Route>
     </Router>
 );

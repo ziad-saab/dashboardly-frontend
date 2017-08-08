@@ -3,14 +3,15 @@ import { Link } from 'react-router';
 import Menu from './modals/Menu';
 import './App.css';
 
+
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = { isMenuOpen: false }
   }
-  
+
   closeMenu = () => this.setState({ isMenuOpen: false })
-  
+
   render() {
     let {isMenuOpen} = this.state
     return (

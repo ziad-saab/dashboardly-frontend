@@ -10,7 +10,7 @@ export default class CreateBoookmark extends Component {
   render() {
     return (
       <div>
-        <h1>Title</h1>
+        <h1>bookmarks</h1>
       </div>
     );
   }

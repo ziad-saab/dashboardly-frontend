@@ -6,6 +6,7 @@
     "react-scripts": "0.9.5"
   },
   "dependencies": {
+    "cors": "^2.8.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-onclickoutside": "^5.11.1",

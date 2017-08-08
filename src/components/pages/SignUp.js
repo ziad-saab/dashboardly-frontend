@@ -1,11 +1,16 @@
 import React, {Component} from 'react';
 import './SignUp.css';
+import { API_HOST } from '../../config';
+
+
+
 
 export default class SignUp extends Component {
 
+
   _handleSignup = (e) => {
     e.preventDefault();
-    console.log(this.refs.email.value)
+    //console.log(this.refs.email.value)
     let fetchConfig = {
       method: 'POST',
       mode: 'cors',
@@ -19,8 +24,11 @@ export default class SignUp extends Component {
    }
 
    return (
-     fetch(`http://localhost:3000/auth/users`, fetchConfig)
-     .then( res => this.props.router.push('/login'))
+     fetch(`${API_HOST}/auth/users`, fetchConfig)
+     .then( function(res) {
+       //console.log(res)
+       this.props.router.push('/login')
+     })
      .catch( error => console.log(error.stack))
    )
    }

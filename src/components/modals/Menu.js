@@ -4,9 +4,34 @@ import onClickOutside from 'react-onclickoutside';
 import auth from '../../auth';
 import {API_HOST} from '../../config';
 import './Menu.css';
+import { API_HOST } from '../../config';
+
 
 
 class Menu extends Component {
+  constructor() {
+    super()
+    this.state = {
+      image : "hello"
+    }
+  }
+
+
+  getImage = () => {
+    fetch(`${API_HOST}/auth/me`)
+    .then( data => data.json())
+    .then(r => {
+       this.setState({
+         image : r.avatarUrl
+       })
+    })
+    .catch(e => console.log(e))
+  }
+
+  componentDidMount() {
+    this.getImage();
+  }
+
 
   handleClickOutside = () => {
     this.props.closeMenu();
@@ -18,7 +43,7 @@ class Menu extends Component {
       <div className={`menu ${show?"show":""}`}>
 
         <div className="menu__header">
-          <img src="" alt="profile-pic" className="menu__avatar"/>
+          <img src={this.state.image} alt="profile-pic" className="menu__avatar"/>
         </div>
 
         <div className="menu__list">
