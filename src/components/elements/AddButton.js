@@ -8,11 +8,7 @@ export default class AddButton extends Component {
      this.state = {
         showResults: false
       };
-
-
  }
-
-
  handleClick(e) {
      e.preventDefault();
       this.setState({
@@ -22,21 +18,16 @@ export default class AddButton extends Component {
      console.log(this.state)
    }
     render() {
+		
       if(this.state.showResults===true){
         return (<CreateBoard/>)
       }
+
       return(
-
-
        <div className="add-button">
-
          <button onClick={this.handleClick.bind(this)}>
             <i className="fa fa-plus fa-2x"/>
-
          </button>
-
-
-
        </div>
       )
 

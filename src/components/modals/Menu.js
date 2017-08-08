@@ -5,8 +5,6 @@ import auth from '../../auth';
 import './Menu.css';
 import { API_HOST } from '../../config';
 
-
-
 class Menu extends Component {
   constructor() {
     super()
@@ -14,8 +12,6 @@ class Menu extends Component {
       image : "hello"
     }
   }
-
-
   getImage = () => {
     fetch(`${API_HOST}/auth/me`)
     .then( data => data.json())

@@ -1,3 +1,3 @@
 module.exports = {
-  API_HOST: "https://private-481e5-dashboardly.apiary-mock.com"
+  API_HOST: "https://localhost:3001"
 }
