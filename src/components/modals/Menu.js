@@ -20,6 +20,7 @@ class Menu extends Component {
     fetch(`${API_HOST}/auth/me`)
     .then( data => data.json())
     .then(r => {
+      console.log(r)
        this.setState({
          image : r.avatarUrl
        })
