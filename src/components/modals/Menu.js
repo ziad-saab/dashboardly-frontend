@@ -41,7 +41,9 @@ class Menu extends Component {
       })
   }
   handleClickOutside = () => {
-    this.props.closeMenu();
+	if(this.props.show === true) {
+		this.props.closeMenu();
+	}
   }
   render() {
     let { closeMenu, show } = this.props
