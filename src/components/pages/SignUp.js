@@ -6,8 +6,10 @@ import { API_HOST } from '../../config';
 
 
 export default class SignUp extends Component {
-
-
+	constructor(props) {
+		super();
+		this.state = {};
+	}
   _handleSignup = (e) => {
     e.preventDefault();
     //console.log(this.refs.email.value)
@@ -22,17 +24,14 @@ export default class SignUp extends Component {
             "password" : this.refs.password.value
      })
    }
-
    return (
      fetch(`${API_HOST}/auth/users`, fetchConfig)
      .then( function(res) {
-       //console.log(res)
-       this.props.router.push('/login')
+    //    this.props.router.push('/login')
      })
      .catch( error => console.log(error.stack))
    )
-   }
-
+  }
   render() {
     return (
       <div>
@@ -45,5 +44,4 @@ export default class SignUp extends Component {
       </div>
     );
   }
-
 }
