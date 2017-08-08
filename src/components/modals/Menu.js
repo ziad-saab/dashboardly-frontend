@@ -4,7 +4,7 @@ import onClickOutside from 'react-onclickoutside';
 import auth from '../../auth';
 import {API_HOST} from '../../config';
 import './Menu.css';
-import { API_HOST } from '../../config';
+
 
 
 
