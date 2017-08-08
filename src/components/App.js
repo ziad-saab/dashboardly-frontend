@@ -25,7 +25,7 @@ class App extends Component {
         </div>
 
         <Menu show={isMenuOpen} closeMenu={this.closeMenu}/>
-
+        
         {this.props.children}
 
       </div>
