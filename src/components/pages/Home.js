@@ -4,7 +4,15 @@ import BoardCard from '../elements/BoardCard';
 import AddButton from '../elements/AddButton';
 import auth from '../../auth';
 import './Home.css';
+import CreateBoard from '../modals/CreateBoard'
 
+
+const display = {
+  display: 'block'
+};
+const hide = {
+  display: 'none'
+};
 
 export default class Home extends Component {
   constructor(props) {
@@ -26,11 +34,13 @@ export default class Home extends Component {
     .catch(console.error)
   }
 
+  _clicked = () => {
+    alert("hello world")
+  }
   render() {
     let { boards } = this.state
     return (
       <div className="home">
-
         { boards.map(b =>
           <BoardCard
             key={b.id}
@@ -40,7 +50,7 @@ export default class Home extends Component {
             updatedAt={b.updatedAt}
           />
         )}
-        {auth.isLoggedIn() ? <AddButton /> : null}
+        {auth.isLoggedIn() ? <AddButton clicked={this.toggle}/> : null}
       </div>
     );
   }

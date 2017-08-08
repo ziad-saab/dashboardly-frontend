@@ -4,6 +4,7 @@ import CreateBoard from '../modals/CreateBoard';
 export default class AddButton extends Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			showResults: false
 		};
@@ -15,9 +16,11 @@ export default class AddButton extends Component {
 		console.log(this.state)
 	}
 	render() {
+
 		if (this.state.showResults === true) {
 			return (<CreateBoard/>)
 		}
+
 		return (
 			<div className="add-button">
 				<button onClick={this.handleClick.bind(this)}>
@@ -25,5 +28,7 @@ export default class AddButton extends Component {
 				</button>
 			</div>
 		)
+
 	}
+
 }

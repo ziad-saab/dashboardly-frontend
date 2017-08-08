@@ -6,8 +6,6 @@ import {API_HOST} from '../../config';
 import './Menu.css';
 
 
-
-
 class Menu extends Component {
   constructor() {
     super()
