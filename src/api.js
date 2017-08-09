@@ -53,6 +53,13 @@ class Api {
 	.set('Authorization', `token ${token}`)
   )
 
+  createBookmark = (title, url, description, boardId, token) => (
+	  superagent
+	  .post(`${API_HOST}/boards/${boardId}/bookmarks`)
+	  .send({title, url, description})
+	  .set('Authorization', `token ${token}`)
+  )
+
   updateBookmark = (boardId, bookmarkId, token) => (
 	  superagent
 	  .patch(`${API_HOST}/boards/${boardId}/bookmarks/${bookmarkId}`)

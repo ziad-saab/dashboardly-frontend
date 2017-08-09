@@ -19,7 +19,7 @@ export default class Board extends Component {
 
   componentDidMount() {
     this.fetchBoardData()
-	console.log(this.state.title, 'this is componentDidMount of boards')
+	console.log(this.props.params, 'this is componentDidMount of boards')
   }
 
   fetchBoardData = () => {
@@ -57,7 +57,7 @@ export default class Board extends Component {
         )}
 
       </div>
-	  <AddButton />
+	  <AddButton type={'bookmark'} id={this.props.params.id}/>
 	</div>
     );
   }
