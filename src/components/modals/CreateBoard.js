@@ -35,11 +35,11 @@ export default class CreateBoard extends Component {
 
    return (
      fetch(`${API_HOST}/boards`, fetchConfig)
-     .then( data => {
-       console.log(data)
-       console.log('THIS', this)
-       history.push('/boards/123')
-     })
+     .then( data => data.json())
+	 .then( r => {
+		 console.log(r)
+		 history.push(`/boards/${r[0].id}`)
+	 })
      .catch( error => console.log("ERROR:", error.stack))
    )
 
