@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Menu from './modals/Menu';
 import './App.css';
+import ModifyBoard from './modals/ModifyBoard';
 
 class App extends Component {
   constructor(props) {

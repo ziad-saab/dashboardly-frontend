@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import { API_HOST } from '../../config'
 import { browserHistory as history } from 'react-router';
+import './Menu.css';
+import onClickOutside from 'react-onclickoutside';
 
-export default class ModifyBoard extends Component {
+class ModifyBoard extends Component {
   constructor() {
     super();
     this.state = {
@@ -24,7 +26,6 @@ export default class ModifyBoard extends Component {
   _submitForm = (e) => {
     e.preventDefault();
 
-    console.log('hello world')
     let fetchConfig = {
       method: 'PATCH',
       mode: 'cors',
@@ -48,9 +49,16 @@ export default class ModifyBoard extends Component {
    )
 
   }
+  handleClickOutside = (e) => {
+    e.preventDefault();
+	if(this.props.show === true) {
+		this.props.closeMenu();
+	}
+}
   render() {
+    let { closeMenu, show } = this.props
     return (
-      <div>
+      <div className={`menu ${show?"show":""}`}>
         <h1>Modify Component</h1>
         <form onSubmit={this._submitForm}>
           <p>Title</p>
@@ -58,9 +66,10 @@ export default class ModifyBoard extends Component {
           <p>Description</p>
           <input type="text" value={this.state.inputValue} onInput={ e => this._handleInput(e)} ref="description"/>
           <p> {this.state.inputValue.length} / 80</p>
-          <button>Edit</button>
+          <button onClick={closeMenu}>Edit</button>
         </form>
       </div>
     );
   }
 }
+export default onClickOutside(ModifyBoard);
