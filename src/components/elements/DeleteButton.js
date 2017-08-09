@@ -16,7 +16,7 @@ export default class EditButton extends Component {
 
 		console.log(this.props)
 		if (this.props.type === 'bookmark') {
-			api.deleteBookmark(this.props.id, localStorage.token)
+			api.deleteBookmark(this.props.boardId, this.props.id, localStorage.token)
 			.then(r => {
 			 history.push(`/`)
 			})
@@ -24,7 +24,7 @@ export default class EditButton extends Component {
 		}
 
 		if (this.props.type === "board") {
-			api.deleteBoard(this.props.id, localStorage.token)
+			api.deleteBoard(this.props.boardId, this.props.id, localStorage.token)
 			.then(r => {
 			 history.push(`/`)
 			})

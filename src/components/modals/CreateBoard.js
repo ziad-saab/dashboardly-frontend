@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { API_HOST } from '../../config'
+import api from '../../api';
 import { browserHistory as history } from 'react-router';
 
 export default class CreateBoard extends Component {
@@ -9,7 +9,7 @@ export default class CreateBoard extends Component {
       inputValue : ''
     }
   }
- 
+
   _handleInput = (event) => {
     if(event.target.value.length <= 80) {
       this.setState({
@@ -20,28 +20,13 @@ export default class CreateBoard extends Component {
 
   _submitForm = (e) => {
     e.preventDefault();
-    console.log('hello world')
-    let fetchConfig = {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-             "Content-Type" : 'application/json'
-           },
-      body: JSON.stringify({
-            "title" : this.refs.title.value,
-            "description" : this.refs.description.value
-     })
-   }
 
-   return (
-     fetch(`${API_HOST}/boards`, fetchConfig)
-     .then( data => data.json())
-	 .then( r => {
-		 console.log(r)
-		 history.push(`/boards/${r[0].id}`)
-	 })
-     .catch( error => console.log("ERROR:", error.stack))
-   )
+	api.createBoard(this.refs.title.value, this.refs.description.value, localStorage.token)
+	.then(r => {
+		console.log(r.body[0])
+		history.push(`/boards/${r.body[0].id}`)
+	})
+    .catch( error => console.log("ERROR:", error.stack))
   }
 
   render() {

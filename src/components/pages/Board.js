@@ -18,8 +18,8 @@ export default class Board extends Component {
   }
 
   componentDidMount() {
-	console.log('this is componentDidMount of boards')
     this.fetchBoardData()
+	console.log(this.state.title, 'this is componentDidMount of boards')
   }
 
   fetchBoardData = () => {
@@ -29,10 +29,11 @@ export default class Board extends Component {
       ])
       .then(res => {
         this.setState({
-          title: res[0].body.title,
-          description: res[0].body.description,
+          title: res[0].body[0].title,
+          description: res[0].body[0].description,
           bookmarks: res[1].body.bookmarks
         })
+		console.log(this.state, 'the state wtf')
       })
       .catch(console.error)
   }
@@ -41,6 +42,7 @@ export default class Board extends Component {
     let { bookmarks } = this.state
     return (
 	<div>
+	  <h1>{this.state.title}</h1>
       <div className="board">
 
         { bookmarks.map(b =>

@@ -20,7 +20,7 @@ export default class BoardCard extends Component {
 	          <p>{ description }</p>
 	        </div>
 	      </Link>
-	  	  <EditButton type={`board`} id={id}/>
+	  	  <EditButton type={`board`} id={id} />
 	      <DeleteButton type={`board`} id={id} />
 	  </div>
     );

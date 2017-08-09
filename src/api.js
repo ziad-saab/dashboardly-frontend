@@ -12,6 +12,7 @@ class Api {
   requestLogout = (token) => (
     superagent
     .delete(`${API_HOST}/auth/sessions`)
+	.send({token})
     .set('Authorization', `token ${token}`)
   )
 
@@ -25,6 +26,13 @@ class Api {
     superagent
     .get(`${API_HOST}/boards/${id}`)
 	.set('Authorization', `token ${token}`)
+  )
+
+  createBoard = (title, description, token,) => (
+	  superagent
+	  .post(`${API_HOST}/boards`)
+	  .send({title, description})
+	  .set('Authorization', `token ${token}`)
   )
 
   updateBoard = (id, token) => (
@@ -45,15 +53,15 @@ class Api {
 	.set('Authorization', `token ${token}`)
   )
 
-  updateBookmark = (boardId, token) => (
+  updateBookmark = (boardId, bookmarkId, token) => (
 	  superagent
-	  .patch(`${API_HOST}/boards/${boardId}/bookmarks`)
+	  .patch(`${API_HOST}/boards/${boardId}/bookmarks/${bookmarkId}`)
 	  .set('Authorization', `token ${token}`)
   )
 
-  deleteBookmark = (boardId, token) => (
+  deleteBookmark = (boardId, bookmarkId, token) => (
 	   superagent
-	   .delete(`${API_HOST}/boards/${boardId}/bookmarks`)
+	   .delete(`${API_HOST}/boards/${boardId}/bookmarks/${bookmarkId}`)
 	   .set('Authorization', `token ${token}`)
   )
 
