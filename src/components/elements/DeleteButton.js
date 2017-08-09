@@ -12,7 +12,7 @@ export default class EditButton extends Component {
 	}
 	_handleDelete = (e) => {
 		  e.preventDefault();
-
+		  console.log(this.props)
 		  let fetchObj = {
 			  method: "DELETE",
 			  body: {

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React, {Component} from 'react';
 import './CreateBoookmark.css';
 
@@ -11,29 +11,15 @@ export default class CreateBoookmark extends Component {
   render() {
     return (
       <div>
-        <h1>Title</h1>
+        <form action="">
+			<label htmlFor="">Title</label>
+			<input type="text"/>
+			<label htmlFor="">URL</label>
+			<input type="text"/>
+			<button>Submit Bookmark</button>
+		</form>
       </div>
     );
   }
 
 }
-=======
-import React, {Component} from 'react';
-import './CreateBoookmark.css';
-
-export default class CreateBoookmark extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>bookmarks</h1>
-      </div>
-    );
-  }
-
-}
->>>>>>> 5477addda2762397177b6f645e41dcbacbe03a25

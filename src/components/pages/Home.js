@@ -23,14 +23,12 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-	console.log('this works')
     this._fetchBoards();
   }
 
   _fetchBoards = () => {
     api.getBoardsList()
     .then(res => {
-	  console.log(res.body)
       this.setState({ boards: res.body })
     })
     .catch(console.error)

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CreateBoard from '../modals/CreateBoard';
+import ModifyBoard from '../modals/ModifyBoard';
 import {API_HOST} from '../../config'
 
 export default class EditButton extends Component {
@@ -20,20 +20,21 @@ export default class EditButton extends Component {
 				  description: this.props.description
 			  }
 		  }
-		  fetch(`${API_HOST}/boards/${this.prop.id}`, fetchObj)
+		  fetch(this.props.url, fetchObj)
 		  	.then(r => {
 				console.log(r)
 		})
 	}
 	_handleClick = (e) => {
       e.preventDefault();
+
 	  this.setState({
 		  showResults: true
 	  })
 	}
 	render() {
 		if (this.state.showResults === true) {
-			return (<CreateBoard click={e => this._handleEdit(e)}/>)
+			return (<ModifyBoard click={e => this._handleEdit(e)}/>)
 		}
 		return (
 			<div className="add-button">
