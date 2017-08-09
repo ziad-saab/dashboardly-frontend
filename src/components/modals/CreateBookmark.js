@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './CreateBookmark.css';
 import { browserHistory as history } from 'react-router';
 import { API_HOST } from '../../config'
+import api from '../../api'
 
 export default class CreateBoookmark extends Component {
   constructor(props) {
@@ -9,34 +10,15 @@ export default class CreateBoookmark extends Component {
     this.state = {};
   }
 
-
   _submitBookmark = (e) => {
-    e.preventDefault();
-    console.log('hello world')
-    console.log("inputs", this.refs.url.value, this.refs.title.value, this.refs.description.value)
-    let fetchConfig = {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-             "Content-Type" : 'application/json',
-             "authorization" : localStorage.token
-           },
-      body: JSON.stringify({
-            "url" : this.refs.url.value,
-            "title" : this.refs.title.value,
-            "description" : this.refs.description.value
-     })
-   }
+   e.preventDefault();
 
-   return (
-     fetch(`${API_HOST}/boards/123/bookmarks`, fetchConfig)
-     .then( data => { data.json() })
-     .then( r => {history.push(`/`)})
-     .catch( error => console.log("ERROR:", error.stack))
-   )
+   api.createBookmark(this.refs.title.value, this.refs.url.value, this.refs.description.value, this.props.boardId, localStorage.token)
+   .then( data => {
+	   console.log(data.body)
+	   history.push(`/boards/${this.props.boardId}/bookmarks`)
+   })
   }
-
-
 
   render() {
     return (

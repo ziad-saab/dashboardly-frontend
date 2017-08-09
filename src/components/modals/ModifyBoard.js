@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import { API_HOST } from '../../config'
 import { browserHistory as history } from 'react-router';
-import './ModifyBoard.css';
-import onClickOutside from 'react-onclickoutside';
+import api from '../../api';
 
-class ModifyBoard extends Component {
+export default class ModifyBoard extends Component {
   constructor() {
     super();
     this.state = {
@@ -22,54 +20,29 @@ class ModifyBoard extends Component {
       })
     }
   }
-
   _submitForm = (e) => {
     e.preventDefault();
 
-    let fetchConfig = {
-      method: 'PATCH',
-      mode: 'cors',
-      headers: {
-             "Content-Type" : 'application/json'
-           },
-      body: JSON.stringify({
-            "title" : this.refs.title.value,
-            "description" : this.refs.description.value
-     })
-   }
-
-   return (
-     fetch(`${API_HOST}/boards/${this.props.id}`, fetchConfig)
-     .then( data => {
-       console.log(data)
-       console.log('THIS', this)
-       history.push('/boards/123')
-     })
-     .catch( error => console.log("ERROR:", error.stack))
-   )
+	return api.updateBoard(this.props.id, localStorage.token)
+	.then(r => {
+	 history.push(`/boards/${r.body.id}`)
+	})
+    .catch( error => console.log("ERROR:", error.stack))
 
   }
-  handleClickOutside = (e) => {
-    e.preventDefault();
-	if(this.props.show === true) {
-		this.props.closeMenu();
-	}
-}
   render() {
-    let { closeMenu, show } = this.props
     return (
-      <div className= {`menu ${show?"show":""}`}>
-        <h1 className='editMenuHeader'>Modify Component</h1>
-        <form className='editMenuList' onSubmit={this._submitForm}>
+      <div>
+        <h1>Modify Component</h1>
+        <form onSubmit={this._submitForm}>
           <p>Title</p>
           <input type="text" ref="title"/>
           <p>Description</p>
           <input type="text" value={this.state.inputValue} onInput={ e => this._handleInput(e)} ref="description"/>
           <p> {this.state.inputValue.length} / 80</p>
-          <button onClick={closeMenu}>Edit</button>
+          <button>Edit</button>
         </form>
       </div>
     );
   }
 }
-export default onClickOutside(ModifyBoard);

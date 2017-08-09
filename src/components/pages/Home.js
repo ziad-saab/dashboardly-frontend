@@ -4,7 +4,6 @@ import BoardCard from '../elements/BoardCard';
 import AddButton from '../elements/AddButton';
 import auth from '../../auth';
 import './Home.css';
-import CreateBoard from '../modals/CreateBoard'
 
 
 const display = {
@@ -50,7 +49,7 @@ export default class Home extends Component {
             updatedAt={b.updatedAt}
           />
         )}
-        {auth.isLoggedIn() ? <AddButton clicked={this.toggle}/> : null}
+        {auth.isLoggedIn() ? <AddButton type={'board'} clicked={this.toggle}/> : null}
       </div>
     );
   }

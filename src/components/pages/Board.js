@@ -18,21 +18,22 @@ export default class Board extends Component {
   }
 
   componentDidMount() {
-	console.log('this is componentDidMount of boards')
     this.fetchBoardData()
+	console.log(this.props.params, 'this is componentDidMount of boards')
   }
 
   fetchBoardData = () => {
       Promise.all([
-        api.getBoard(this.props.params.id),
-        api.getBookmarks(this.props.params.id)
+        api.getBoard(this.props.params.id, localStorage.token),
+        api.getBookmarks(this.props.params.id, localStorage.token)
       ])
       .then(res => {
         this.setState({
-          title: res[0].body.title,
-          description: res[0].body.description,
+          title: res[0].body[0].title,
+          description: res[0].body[0].description,
           bookmarks: res[1].body.bookmarks
         })
+		console.log(this.state, 'the state wtf')
       })
       .catch(console.error)
   }
@@ -41,6 +42,7 @@ export default class Board extends Component {
     let { bookmarks } = this.state
     return (
 	<div>
+	  <h1>{this.state.title}</h1>
       <div className="board">
 
         { bookmarks.map(b =>
@@ -55,7 +57,7 @@ export default class Board extends Component {
         )}
 
       </div>
-	  <AddButton />
+	  <AddButton type={'bookmark'} id={this.props.params.id}/>
 	</div>
     );
   }

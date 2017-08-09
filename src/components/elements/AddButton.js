@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import CreateBoard from '../modals/CreateBoard';
+import CreateBookmark from '../modals/CreateBookmark';
 
 export default class AddButton extends Component {
 	constructor(props) {
@@ -16,9 +17,13 @@ export default class AddButton extends Component {
 		console.log(this.state)
 	}
 	render() {
+		console.log(this.props, 'inside of add button')
+		if (this.state.showResults === true && this.props.type === 'bookmark') {
+			return (<CreateBookmark boardId={this.props.id}/>)
+		}
 
-		if (this.state.showResults === true) {
-			return (<CreateBoard/>)
+		if (this.state.showResults === true && this.props.type === 'board') {
+			return (<CreateBoard id={this.props.id}/>)
 		}
 
 		return (

@@ -9,9 +9,7 @@ export default class BoardCard extends Component {
     super(props);
     this.state = {};
   }
-  _handleDelete = () => {
-	  //call fetch.delete on this board
-  }
+
   render() {
     let { title, description, id } = this.props
     return (
@@ -22,8 +20,8 @@ export default class BoardCard extends Component {
 	          <p>{ description }</p>
 	        </div>
 	      </Link>
-	  	  <EditButton />
-	      <DeleteButton id={id} />
+	  	  <EditButton type={`board`} id={id} />
+	      <DeleteButton type={`board`} id={id} />
 	  </div>
     );
   }
