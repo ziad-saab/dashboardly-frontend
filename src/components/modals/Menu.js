@@ -27,21 +27,21 @@ class Menu extends Component {
   componentDidMount() {
     this.getImage();
   }
-  //  _logout = (e) => {
-	//   e.preventDefault();
-  //     auth.logout()
-  //     .then(r => {
-  //         console.log(r);
-  //         let fetchObj = {
-  //             method: "DELETE",
-  //             body: {
-  //                 token: r
-  //             }
-  //         }
-  //         fetch(`${API_HOST}/auth/sessions`, fetchObj)
-  //           .then( res => this.props.router.push('/login'))
-  //     })
-  // }
+   _logout = (e) => {
+	  e.preventDefault();
+      auth.logout()
+      .then(r => {
+          console.log(r);
+          let fetchObj = {
+              method: "DELETE",
+              body: {
+                  token: r
+              }
+          }
+          fetch(`${API_HOST}/auth/sessions`, fetchObj)
+            .then( res => this.props.router.push('/login'))
+      })
+  }
 
   handleClickOutside = () => {
 	if(this.props.show === true) {

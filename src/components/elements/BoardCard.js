@@ -15,14 +15,16 @@ export default class BoardCard extends Component {
   render() {
     let { title, description, id } = this.props
     return (
-      <Link to={`/boards/${id}`}>
-        <div className="board-card">
-          <h2>{ title }</h2>
-          <p>{ description }</p>
-        </div>
-		<EditButton />
-		<DeleteButton />
-      </Link>
+	  <div>
+	      <Link to={`/boards/${id}`}>
+	        <div className="board-card">
+	          <h2>{ title }</h2>
+	          <p>{ description }</p>
+	        </div>
+	      </Link>
+	  	  <EditButton />
+	      <DeleteButton id={id} />
+	  </div>
     );
   }
 }

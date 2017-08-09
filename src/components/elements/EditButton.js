@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CreateBoard from '../modals/CreateBoard';
+import ModifyBoard from '../modals/ModifyBoard';
 import {API_HOST} from '../../config'
 
 export default class EditButton extends Component {
@@ -7,9 +7,11 @@ export default class EditButton extends Component {
 		super(props);
 
 		this.state = {
-			showResults: false
+			isMenuOpen: false
 		};
 	}
+	closeMenu = () => this.setState({ isMenuOpen: false });
+
 	_handleEdit = (e) => {
 		  e.preventDefault();
 
@@ -20,24 +22,29 @@ export default class EditButton extends Component {
 				  description: this.props.description
 			  }
 		  }
-		  fetch(`${API_HOST}/boards/${this.prop.id}`, fetchObj)
+		  fetch(this.props.url, fetchObj)
 		  	.then(r => {
 				console.log(r)
 		})
+
 	}
-	_handleClick = (e) => {
-      e.preventDefault();
-	  this.setState({
-		  showResults: true
-	  })
-	}
+	
 	render() {
-		if (this.state.showResults === true) {
-			return (<CreateBoard click={e => this._handleEdit(e)}/>)
+		if (this.state.isMenuOpen === true) {
+			return (
+				<div>
+				<ModifyBoard show={this.state.isMenuOpen} closeMenu={this.closeMenu} click={e => this._handleEdit(e)}/>
+				<div className="add-button">
+					<button onClick={() => this.closeMenu}>
+						EDIT
+					</button>
+				</div>
+				</div>
+		)
 		}
 		return (
 			<div className="add-button">
-				<button onClick={e => this._handleClick(e)}>
+				<button onClick={() => this.setState({isMenuOpen: true})}>
 					EDIT
 				</button>
 			</div>

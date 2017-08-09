@@ -18,7 +18,7 @@ export default class Board extends Component {
   }
 
   componentDidMount() {
-	console.log('working')
+	console.log('this is componentDidMount of boards')
     this.fetchBoardData()
   }
 
@@ -39,8 +39,8 @@ export default class Board extends Component {
 
   render() {
     let { bookmarks } = this.state
-
     return (
+	<div>
       <div className="board">
 
         { bookmarks.map(b =>
@@ -50,11 +50,13 @@ export default class Board extends Component {
             title={b.title}
             description={b.description}
             url={b.url}
+			boardId={this.props.params.id}
           />
         )}
 
-        <AddButton/>
       </div>
+	  <AddButton />
+	</div>
     );
   }
 

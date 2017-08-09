@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import { API_HOST } from '../../config'
 import { browserHistory as history } from 'react-router';
+import './ModifyBoard.css';
+import onClickOutside from 'react-onclickoutside';
 
-export default class CreateBoard extends Component {
+class ModifyBoard extends Component {
   constructor() {
     super();
     this.state = {
@@ -11,6 +13,9 @@ export default class CreateBoard extends Component {
   }
 
   _handleInput = (event) => {
+	event.preventDefault();
+
+	console.log(event.target.value)
     if(event.target.value.length <= 80) {
       this.setState({
         inputValue : event.target.value
@@ -20,9 +25,9 @@ export default class CreateBoard extends Component {
 
   _submitForm = (e) => {
     e.preventDefault();
-    console.log('hello world')
+
     let fetchConfig = {
-      method: 'POST',
+      method: 'PATCH',
       mode: 'cors',
       headers: {
              "Content-Type" : 'application/json'
@@ -34,32 +39,37 @@ export default class CreateBoard extends Component {
    }
 
    return (
-     fetch(`${API_HOST}/boards`, fetchConfig)
-     .then( data => data.json())
-	 .then( r => {
-		 console.log(r)
-		 history.push(`/boards/${r[0].id}`)
-	 })
+     fetch(`${API_HOST}/boards/${this.props.id}`, fetchConfig)
+     .then( data => {
+       console.log(data)
+       console.log('THIS', this)
+       history.push('/boards/123')
+     })
      .catch( error => console.log("ERROR:", error.stack))
    )
 
   }
-
-
-
+  handleClickOutside = (e) => {
+    e.preventDefault();
+	if(this.props.show === true) {
+		this.props.closeMenu();
+	}
+}
   render() {
+    let { closeMenu, show } = this.props
     return (
-      <div>
-        <h1>Title</h1>
-        <form onSubmit={this._submitForm}>
+      <div className= {`menu ${show?"show":""}`}>
+        <h1 className='editMenuHeader'>Modify Component</h1>
+        <form className='editMenuList' onSubmit={this._submitForm}>
           <p>Title</p>
           <input type="text" ref="title"/>
           <p>Description</p>
-          <input type="text" value={this.state.inputValue} onInput={this._handleInput} ref="description"/>
+          <input type="text" value={this.state.inputValue} onInput={ e => this._handleInput(e)} ref="description"/>
           <p> {this.state.inputValue.length} / 80</p>
-          <button>Create</button>
+          <button onClick={closeMenu}>Edit</button>
         </form>
       </div>
     );
   }
 }
+export default onClickOutside(ModifyBoard);

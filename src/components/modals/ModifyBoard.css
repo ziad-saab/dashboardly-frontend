@@ -1,0 +1,36 @@
+.editMenu {
+  width: 270px;
+  position: absolute;
+  margin: 0 auto;
+  left:50;
+  z-index: 10;
+  background: lightgrey;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  transform: translateX(-270px);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.menu.show {
+  transform: translateX(0px);
+  margin:0 auto;
+  opacity: 1;
+  visibility: visible;
+}
+
+.editMenuHeader {
+  /*height: 160px;*/
+  height:10px;
+  text-align: center;
+}
+
+
+.editMenuList {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}

@@ -7,7 +7,6 @@ module.exports = {
       throw new Error('Already logged in')
     }
     else {
-	 console.log('working')
       return api.requestLogin(email, pass)
       .then(res => {
 		  console.log(res, 'this is it')
@@ -26,7 +25,6 @@ module.exports = {
   },
 
   isLoggedIn() {
-	console.log(localStorage, 'tha token')
     return !!localStorage.token
   },
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Menu from './modals/Menu';
 import './App.css';
+import ModifyBoard from './modals/ModifyBoard';
 
 class App extends Component {
   constructor(props) {
@@ -22,12 +23,11 @@ class App extends Component {
           <Link to="/" className="App-navbar__title">Dashboardly</Link>
           <i className="fa fa-cog fa-2x settings-icon"/>
         </div>
-
         <Menu show={isMenuOpen} closeMenu={this.closeMenu}/>
 
         {this.props.children}
 
-      </div>
+        </div>
     );
   }
 }
