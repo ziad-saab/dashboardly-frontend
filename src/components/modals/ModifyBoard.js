@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { API_HOST } from '../../config'
 import { browserHistory as history } from 'react-router';
-import './Menu.css';
+import './ModifyBoard.css';
 import onClickOutside from 'react-onclickoutside';
 
 class ModifyBoard extends Component {
@@ -58,9 +58,9 @@ class ModifyBoard extends Component {
   render() {
     let { closeMenu, show } = this.props
     return (
-      <div className={`menu ${show?"show":""}`}>
-        <h1>Modify Component</h1>
-        <form onSubmit={this._submitForm}>
+      <div className= {`menu ${show?"show":""}`}>
+        <h1 className='menu__header'>Modify Component</h1>
+        <form className='menu__list' onSubmit={this._submitForm}>
           <p>Title</p>
           <input type="text" ref="title"/>
           <p>Description</p>
