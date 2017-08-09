@@ -1,7 +1,8 @@
-.menu {
+.editMenu {
   width: 270px;
-  position: fixed;
+  position: absolute;
   margin: 0 auto;
+  left:50;
   z-index: 10;
   background: lightgrey;
   -webkit-transition: 0.5s;
@@ -20,14 +21,14 @@
   visibility: visible;
 }
 
-.menu__header {
+.editMenuHeader {
   /*height: 160px;*/
   height:10px;
   text-align: center;
 }
 
 
-.menu__list {
+.editMenuList {
   display: flex;
   flex-flow: column;
   align-items: center;

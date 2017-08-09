@@ -58,9 +58,10 @@ class ModifyBoard extends Component {
   render() {
     let { closeMenu, show } = this.props
     return (
+      <div className='editMenu'>
       <div className= {`menu ${show?"show":""}`}>
-        <h1 className='menu__header'>Modify Component</h1>
-        <form className='menu__list' onSubmit={this._submitForm}>
+        <h1 className='editMenuHeader'>Modify Component</h1>
+        <form className='editMenuList' onSubmit={this._submitForm}>
           <p>Title</p>
           <input type="text" ref="title"/>
           <p>Description</p>
@@ -68,6 +69,7 @@ class ModifyBoard extends Component {
           <p> {this.state.inputValue.length} / 80</p>
           <button onClick={closeMenu}>Edit</button>
         </form>
+      </div>
       </div>
     );
   }
