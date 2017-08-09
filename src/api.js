@@ -33,10 +33,28 @@ class Api {
 	  .set('Authorization', `token ${token}`)
   )
 
+  deleteBoard = (boardId, token) => (
+  	 superagent
+  	 .delete(`${API_HOST}/boards/${boardId}`)
+  	 .set('Authorization', `token ${token}`)
+  )
+
   getBookmarks = (boardId, token) => (
     superagent
     .get(`${API_HOST}/boards/${boardId}/bookmarks`)
 	.set('Authorization', `token ${token}`)
+  )
+
+  updateBookmark = (boardId, token) => (
+	  superagent
+	  .patch(`${API_HOST}/boards/${boardId}/bookmarks`)
+	  .set('Authorization', `token ${token}`)
+  )
+
+  deleteBookmark = (boardId, token) => (
+	   superagent
+	   .delete(`${API_HOST}/boards/${boardId}/bookmarks`)
+	   .set('Authorization', `token ${token}`)
   )
 
   getMe = (token) => (

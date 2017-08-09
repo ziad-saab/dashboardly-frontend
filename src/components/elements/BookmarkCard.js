@@ -20,8 +20,8 @@ export default class BookmarkCard extends Component {
         </div>
         <img src={url} alt={title}/>
       </a>
-		<EditButton url={`${API_HOST}/boards/${this.props.boardId}/bookmarks/${this.props.id}`}/>
-		<DeleteButton id={this.props.id}/>
+		<EditButton type={`bookmark`} id={this.props.id}/>
+		<DeleteButton type={`bookmark`} id={this.props.id}/>
 	</div>
     );
   }
