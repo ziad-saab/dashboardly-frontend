@@ -6,12 +6,12 @@ import auth from '../../auth';
 import './Home.css';
 
 
-const display = {
-  display: 'block'
-};
-const hide = {
-  display: 'none'
-};
+// const display = {
+//   display: 'block'
+// };
+// const hide = {
+//   display: 'none'
+// };
 
 export default class Home extends Component {
   constructor(props) {

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import api from '../../api';
 import BookmarkCard from '../elements/BookmarkCard';
-import auth from '../../auth';
 import './Board.css';
 import AddButton from '../elements/AddButton';
 
@@ -32,12 +31,10 @@ export default class Board extends Component {
           title: res[0].body[0].title,
           description: res[0].body[0].description,
           bookmarks: res[1].body.bookmarks
-        })
-		console.log(this.state, 'the state wtf')
+	  })
       })
       .catch(console.error)
   }
-
   render() {
     let { bookmarks } = this.state
     return (
@@ -57,7 +54,7 @@ export default class Board extends Component {
         )}
 
       </div>
-	  <AddButton type={'bookmark'} id={this.props.params.id}/>
+	  <AddButton type={'bookmark'} fetchData={this.fetchBoardData} id={this.props.params.id}/>
 	</div>
     );
   }

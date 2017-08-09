@@ -3,7 +3,6 @@ import {Link, browserHistory as history} from 'react-router';
 import onClickOutside from 'react-onclickoutside';
 import auth from "../../auth"
 import api from '../../api';
-import {API_HOST} from '../../config';
 import './Menu.css';
 
 class Menu extends Component {

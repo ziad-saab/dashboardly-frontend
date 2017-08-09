@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import ModifyBoard from '../modals/ModifyBoard';
-import {API_HOST} from '../../config'
 import api from '../../api';
 
 export default class EditButton extends Component {

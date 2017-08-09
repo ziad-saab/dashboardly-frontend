@@ -14,12 +14,10 @@ export default class AddButton extends Component {
 		e.preventDefault();
 		this.setState({showResults: true});
 
-		console.log(this.state)
 	}
 	render() {
-		console.log(this.props, 'inside of add button')
 		if (this.state.showResults === true && this.props.type === 'bookmark') {
-			return (<CreateBookmark boardId={this.props.id}/>)
+			return (<CreateBookmark fetch={this.props.fetchData} boardId={this.props.id}/>)
 		}
 
 		if (this.state.showResults === true && this.props.type === 'board') {

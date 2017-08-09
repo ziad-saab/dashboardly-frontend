@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './CreateBookmark.css';
 import { browserHistory as history } from 'react-router';
-import { API_HOST } from '../../config'
 import api from '../../api'
 
 export default class CreateBoookmark extends Component {
@@ -15,8 +14,9 @@ export default class CreateBoookmark extends Component {
 
    api.createBookmark(this.refs.title.value, this.refs.url.value, this.refs.description.value, this.props.boardId, localStorage.token)
    .then( data => {
+	   this.props.fetch()
 	   console.log(data.body)
-	   history.push(`/boards/${this.props.boardId}/bookmarks`)
+	   history.push(`/boards/${this.props.boardId}`)
    })
   }
 
@@ -24,14 +24,13 @@ export default class CreateBoookmark extends Component {
     return (
       <div>
         <h1>Create New Bookmark</h1>
-        <form onSubmit={this._submitBookmark}>
+        <form>
           <input type="text" placeholder="www.instagram.com" ref="url"/>
           <input type="text" placeholder="Instgram" ref="title"/>
           <input type="text" placeholder="Random text goes here." ref="description"/>
-          <button>make a bookmark</button>
+          <button onClick={e => this._submitBookmark(e)}>make a bookmark</button>
         </form>
       </div>
     );
   }
-
 }

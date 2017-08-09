@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import './BookmarkCard.css';
 import EditButton from './EditButton'
 import DeleteButton from './DeleteButton'
-import {API_HOST} from '../../config'
 
 export default class BookmarkCard extends Component {
   constructor(props) {
