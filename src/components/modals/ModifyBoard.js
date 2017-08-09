@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { API_HOST } from '../../config'
 import { browserHistory as history } from 'react-router';
+import api from '../../api';
 
 export default class ModifyBoard extends Component {
   constructor() {
@@ -20,32 +20,38 @@ export default class ModifyBoard extends Component {
       })
     }
   }
-
   _submitForm = (e) => {
     e.preventDefault();
-
-    console.log('hello world')
-    let fetchConfig = {
-      method: 'PATCH',
-      mode: 'cors',
-      headers: {
-             "Content-Type" : 'application/json'
-           },
-      body: JSON.stringify({
-            "title" : this.refs.title.value,
-            "description" : this.refs.description.value
-     })
-   }
-
-   return (
-     fetch(`${API_HOST}/boards/${this.props.id}`, fetchConfig)
-     .then( data => {
-       console.log(data)
-       console.log('THIS', this)
-       history.push('/boards/123')
-     })
+   //
+   //  console.log('hello world')
+   //  let fetchConfig = {
+   //    method: 'PATCH',
+   //    mode: 'cors',
+   //    headers: {
+   //           "Content-Type" : 'application/json'
+   //         },
+   //    body: JSON.stringify({
+   //          "title" : this.refs.title.value,
+   //          "description" : this.refs.description.value
+   //   })
+   // }
+   //
+   // return (
+   //   fetch(`${API_HOST}/boards/${this.props.id}`, fetchConfig)
+   //   .then( data => {
+   //     console.log(data)
+   //     console.log('THIS', this)
+   //     history.push('/boards/123')
+   //   })
+   //
+   //
+	 console.log(this.props, 'these are the props inside modify board')
+	 return api.updateBoard(this.props.id, localStorage.token)
+	 .then(r => {
+		 console.log(r, "this is the resp from getBoard in modify board")
+		 history.push(`/boards/${r.body.id}`)
+	 })
      .catch( error => console.log("ERROR:", error.stack))
-   )
 
   }
   render() {

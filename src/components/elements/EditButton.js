@@ -34,7 +34,7 @@ export default class EditButton extends Component {
 	}
 	render() {
 		if (this.state.showResults === true) {
-			return (<ModifyBoard click={e => this._handleEdit(e)}/>)
+			return (<ModifyBoard id={this.props.id} click={e => this._handleEdit(e)}/>)
 		}
 		return (
 			<div className="add-button">

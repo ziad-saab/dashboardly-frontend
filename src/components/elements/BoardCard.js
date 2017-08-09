@@ -22,7 +22,7 @@ export default class BoardCard extends Component {
 	          <p>{ description }</p>
 	        </div>
 	      </Link>
-	  	  <EditButton />
+	  	  <EditButton id={id}/>
 	      <DeleteButton id={id} />
 	  </div>
     );

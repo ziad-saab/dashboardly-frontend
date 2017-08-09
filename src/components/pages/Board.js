@@ -24,8 +24,8 @@ export default class Board extends Component {
 
   fetchBoardData = () => {
       Promise.all([
-        api.getBoard(this.props.params.id),
-        api.getBookmarks(this.props.params.id)
+        api.getBoard(this.props.params.id, localStorage.token),
+        api.getBookmarks(this.props.params.id, localStorage.token)
       ])
       .then(res => {
         this.setState({

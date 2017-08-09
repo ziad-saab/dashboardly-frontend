@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import onClickOutside from 'react-onclickoutside';
-import auth from '../../auth';
+import auth from "../../auth"
+import api from '../../api';
 import {API_HOST} from '../../config';
 import './Menu.css';
 
@@ -10,22 +11,21 @@ class Menu extends Component {
   constructor() {
     super()
     this.state = {
-      image : "hello"
+      image : " "
     }
   }
   getImage = () => {
-    fetch(`${API_HOST}/auth/me`)
-    .then( data => data.json())
-    .then(r => {
-      console.log(r)
-       this.setState({
-         image : r.avatarUrl
-       })
-    })
-    .catch(e => console.log(e))
-  }
+	api.getMe(localStorage.token)
+	    .then( data => data.body)
+	    .then(r => {
+	       this.setState({
+	         image : r.AvatarUrl
+	       })
+	    })
+	    .catch(e => console.log(e))
+	  }
   componentDidMount() {
-    this.getImage();
+	    this.getImage();
   }
    _logout = (e) => {
 	  e.preventDefault();
@@ -49,6 +49,7 @@ class Menu extends Component {
 	}
   }
   render() {
+	console.log(this.state)
     let { closeMenu, show } = this.props
     const isLoggedIn = auth.isLoggedIn()
     return (

@@ -15,21 +15,35 @@ class Api {
     .set('Authorization', `token ${token}`)
   )
 
-  getBoardsList = (page, count) => (
+  getBoardsList = (page, count, token) => (
     superagent
     .get(`${API_HOST}/boards`)
+	.set('Authorization', `token ${token}`)
   )
 
-  getBoard = (id) => (
+  getBoard = (id, token) => (
     superagent
     .get(`${API_HOST}/boards/${id}`)
+	.set('Authorization', `token ${token}`)
   )
 
-  getBookmarks = (boardId) => (
+  updateBoard = (id, token) => (
+	  superagent
+	  .patch(`${API_HOST}/boards/${id}`)
+	  .set('Authorization', `token ${token}`)
+  )
+
+  getBookmarks = (boardId, token) => (
     superagent
     .get(`${API_HOST}/boards/${boardId}/bookmarks`)
+	.set('Authorization', `token ${token}`)
   )
 
+  getMe = (token) => (
+	superagent
+	.get(`${API_HOST}/auth/me`)
+	.set('Authorization', `token ${token}`)
+  )
 }
 
 export default new Api();

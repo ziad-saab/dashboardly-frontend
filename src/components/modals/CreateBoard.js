@@ -9,7 +9,7 @@ export default class CreateBoard extends Component {
       inputValue : ''
     }
   }
-
+ 
   _handleInput = (event) => {
     if(event.target.value.length <= 80) {
       this.setState({
@@ -42,10 +42,7 @@ export default class CreateBoard extends Component {
 	 })
      .catch( error => console.log("ERROR:", error.stack))
    )
-
   }
-
-
 
   render() {
     return (
