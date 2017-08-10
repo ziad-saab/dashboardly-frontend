@@ -29,6 +29,7 @@ export default class CreateBoard extends Component {
     .catch( error => console.log("ERROR:", error.stack))
   }
 
+
   render() {
     return (
       <div>
@@ -37,7 +38,7 @@ export default class CreateBoard extends Component {
           <p>Title</p>
           <input type="text" ref="title"/>
           <p>Description</p>
-          <input type="text" value={this.state.inputValue} onInput={this._handleInput} ref="description"/>
+          <input type="text" value={this.state.inputValue} onInput={this._handleInput} ref="description"/>s
           <p> {this.state.inputValue.length} / 80</p>
           <button>Create</button>
         </form>
