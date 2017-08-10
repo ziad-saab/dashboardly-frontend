@@ -7,7 +7,8 @@ export default class CreateBoard extends Component {
     super();
     this.state = {
       inputValue : '',
-      titleValue : ''
+      titleValue : '',
+      errorTitle : ''
     }
   }
 
@@ -36,7 +37,13 @@ export default class CreateBoard extends Component {
 		console.log(r.body[0])
 		history.push(`/boards/${r.body[0].id}`)
 	})
-    .catch( error => console.log("ERROR MAKING BOARD:", error.stack))
+    .catch( e => {
+      console.log("ERROR MAKING BOARD:", e.message)
+      this.setState({
+        errorTitle : "You board needs a title"
+      })
+      console.log(e)
+  })
   }
 
   render() {
@@ -51,6 +58,7 @@ export default class CreateBoard extends Component {
           <input type="text" value={this.state.inputValue} onInput={this._handleInput} ref="description"/>
           <p> {this.state.inputValue.length} / 80</p>
           <button>Create</button>
+          <p>{this.state.errorTitle}</p>
         </form>
       </div>
     );
