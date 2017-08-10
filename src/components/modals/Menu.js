@@ -9,28 +9,39 @@ class Menu extends Component {
 	constructor() {
 		super()
 		this.state = {
-			image: " "
+			image: " ",
+			loggedIn: ""
 		}
 	}
 
 	getImage = () => {
+		console.log(localStorage, 'this is inside login')
 		api.getMe(localStorage.token).then(data => data.body).then(r => {
-			this.setState({image: r.AvatarUrl})
+			this.setState({
+				image: r.AvatarUrl,
+				loggedIn: auth.isLoggedIn()
+			})
+
 		}).catch(e => console.log(e))
 	}
 
-	componentDidMount() {
-		this.getImage();
+	componentDidMount(prevProps, prevState) {
+		console.log('it mounted', this.props)
+		this.getImage()
 	}
 
-	componentDidUpdate(prevState) {
-
+	componentDidUpdate(prevProps ,prevState) {
+		console.log(this.props.path, 'new one', prevProps.path, 'old one')
+		if(this.props.path !== prevProps.path) {
+			this.setState({
+				image: ""
+			})
+			this.getImage();
+		}
 	}
-
 
 	_logout = (e) => {
 		e.preventDefault();
-
 		auth.logout().then(r => history.push('/login'));
 	}
 

@@ -22,7 +22,7 @@ class App extends Component {
           <Link to="/" className="App-navbar__title">Dashboardly</Link>
           <i className="fa fa-cog fa-2x settings-icon"/>
         </div>
-        <Menu show={isMenuOpen} closeMenu={this.closeMenu}/>
+        <Menu show={isMenuOpen} closeMenu={this.closeMenu} path={this.props.location.pathname}/>
 
         {this.props.children}
 

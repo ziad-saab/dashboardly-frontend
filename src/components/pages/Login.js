@@ -12,7 +12,7 @@ export default class Login extends Component {
       email: this.refs.email.value,
       password: this.refs.password.value
     }
-    console.log(user);
+    console.log(user, 'this is in login');
     if (user.email && user.password) {
       auth.login(user.email, user.password)
       .then(res => this.props.router.push('/'))
