@@ -47,6 +47,7 @@ export default class Home extends Component {
             title={b.title}
             description={b.description}
             updatedAt={b.updatedAt}
+            fetchData={this._fetchBoards}
           />
         )}
         {auth.isLoggedIn() ? <AddButton type={'board'} clicked={this.toggle}/> : null}

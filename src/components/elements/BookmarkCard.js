@@ -21,7 +21,7 @@ export default class BookmarkCard extends Component {
         <img src={url} alt={title}/>
       </a>
 		<EditButton type={`bookmark`} fetch={this.props.fetchData} id={this.props.id} boardId={this.props.boardId}/>
-		<DeleteButton type={`bookmark`} id={this.props.id} boardId={this.props.boardId}/>
+		<DeleteButton type={`bookmark`} fetch={this.props.fetchData} id={this.props.id} boardId={this.props.boardId}/>
 	</div>
     );
   }

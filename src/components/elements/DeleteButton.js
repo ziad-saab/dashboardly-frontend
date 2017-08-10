@@ -16,15 +16,15 @@ export default class EditButton extends Component {
 		if (this.props.type === 'bookmark') {
 			api.deleteBookmark(this.props.boardId, this.props.id, localStorage.token)
 			.then(r => {
-			 history.push(`/`)
+			 this.props.fetch()
 			})
 		    .catch( error => console.log("ERROR:", error.stack))
 		}
 
 		if (this.props.type === "board") {
-			api.deleteBoard(this.props.boardId, this.props.id, localStorage.token)
+			api.deleteBoard(this.props.id, localStorage.token)
 			.then(r => {
-			 history.push(`/`)
+				this.props.fetch()
 			})
 		    .catch( error => console.log("ERROR:", error.stack))
 		}

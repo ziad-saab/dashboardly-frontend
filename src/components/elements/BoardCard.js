@@ -21,7 +21,7 @@ export default class BoardCard extends Component {
 	        </div>
 	      </Link>
 	  	  <EditButton type={`board`} id={id} />
-	      <DeleteButton type={`board`} id={id} />
+	      <DeleteButton fetch={this.props.fetchData} type={`board`} id={id} />
 	  </div>
     );
   }
