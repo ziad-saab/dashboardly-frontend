@@ -6,7 +6,8 @@ export default class CreateBoard extends Component {
   constructor() {
     super();
     this.state = {
-      inputValue : ''
+      inputValue : '',
+      titleValue : ''
     }
   }
 
@@ -17,6 +18,15 @@ export default class CreateBoard extends Component {
       })
     }
   }
+
+  _handleTitle = (event) => {
+    if(event.target.value.length <= 50) {
+      this.setState({
+        titleValue : event.target.value
+      })
+    }
+  }
+
 
   _submitForm = (e) => {
     e.preventDefault();
@@ -35,7 +45,8 @@ export default class CreateBoard extends Component {
         <h1>Title</h1>
         <form onSubmit={this._submitForm}>
           <p>Title</p>
-          <input type="text" ref="title"/>
+          <input type="text" value={this.state.titleValue} onInput={this._handleTitle} ref="title"/>
+          <p> {this.state.titleValue.length} / 50</p>
           <p>Description</p>
           <input type="text" value={this.state.inputValue} onInput={this._handleInput} ref="description"/>
           <p> {this.state.inputValue.length} / 80</p>
