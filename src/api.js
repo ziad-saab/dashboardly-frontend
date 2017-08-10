@@ -35,9 +35,10 @@ class Api {
 	  .set('Authorization', `token ${token}`)
   )
 
-  updateBoard = (id, token) => (
+  updateBoard = (id, title, description, token) => (
 	  superagent
 	  .patch(`${API_HOST}/boards/${id}`)
+    .send({title, description})
 	  .set('Authorization', `token ${token}`)
   )
 
@@ -60,9 +61,10 @@ class Api {
 	  .set('Authorization', `token ${token}`)
   )
 
-  updateBookmark = (boardId, bookmarkId, token) => (
+  updateBookmark = (boardId, title, description, bookmarkId, token) => (
 	  superagent
 	  .patch(`${API_HOST}/boards/${boardId}/bookmarks/${bookmarkId}`)
+    .send({title, description})
 	  .set('Authorization', `token ${token}`)
   )
 

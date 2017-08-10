@@ -50,6 +50,7 @@ export default class Board extends Component {
             description={b.description}
             url={b.url}
 			boardId={this.props.params.id}
+      fetchData={this.fetchBoardData}
           />
         )}
 

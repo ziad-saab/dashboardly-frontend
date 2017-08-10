@@ -14,7 +14,7 @@ export default class EditButton extends Component {
 
 	_handleEdit = (e) => {
 		e.preventDefault();
-
+		console.log("i'm trying to handle the edit")
 		if (this.props.type === 'bookmark') {
 			api.updateBookmark(this.props.id, localStorage.token)
 			.then(r => {
@@ -36,7 +36,7 @@ export default class EditButton extends Component {
 	render() {
 			return (
 				<div>
-				<ModifyBoard show={this.state.isMenuOpen} closeMenu={this.closeMenu} id={this.props.id} click={e => this._handleEdit(e)}/>
+				<ModifyBoard type={this.props.type} show={this.state.isMenuOpen} closeMenu={this.closeMenu} id={this.props.id} fetch={this.props.fetch} boardId={this.props.boardId} onSubmit={e => this._handleEdit(e)}/>
 				<div className="add-button">
 					<button onClick={() => this.setState({isMenuOpen: !this.isMenuOpen})}>
 						EDIT
