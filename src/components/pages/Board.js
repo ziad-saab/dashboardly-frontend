@@ -12,7 +12,8 @@ export default class Board extends Component {
       description: "",
       bookmarks: [],
       updatedAt: "",
-	  toggle: false
+	  toggle: false,
+      showCreateMenu: false
     };
   }
 
@@ -27,12 +28,12 @@ export default class Board extends Component {
         api.getBookmarks(this.props.params.id, localStorage.token)
       ])
       .then(res => {
-        console.log(res[0].body[0], "here mikey")
         this.setState({
           boardOwner: res[0].body[0].ownerId,
           title: res[0].body[0].title,
           description: res[0].body[0].description,
-          bookmarks: res[1].body.bookmarks
+          bookmarks: res[1].body.bookmarks,
+
 	  })
       })
       .catch(console.error)
@@ -59,7 +60,7 @@ export default class Board extends Component {
         )}
 
       </div>
-	  <AddButton type={'bookmark'} fetchData={this.fetchBoardData} id={this.props.params.id}/>
+	  <AddButton type={'bookmark'} showCreateMenu={this.state.showCreateMenu} fetchData={this.fetchBoardData} id={this.props.params.id}/>
 	</div>
     );
   }

@@ -6,17 +6,15 @@ import api from '../../api'
 export default class CreateBoookmark extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+    };
   }
 
   _submitBookmark = (e) => {
    e.preventDefault();
-
    api.createBookmark(this.refs.title.value, this.refs.url.value, this.refs.description.value, this.props.boardId, localStorage.token)
    .then( data => {
 	   this.props.fetch()
-	   console.log(data.body)
-	   history.push(`/boards/${this.props.boardId}`)
    })
   }
 
@@ -25,9 +23,9 @@ export default class CreateBoookmark extends Component {
       <div>
         <h1>Create New Bookmark</h1>
         <form>
-          <input type="text" placeholder="www.instagram.com" ref="url"/>
-          <input type="text" placeholder="Instgram" ref="title"/>
-          <input type="text" placeholder="Random text goes here." ref="description"/>
+          <input type="text" placeholder="url" ref="url"/>
+          <input type="text" placeholder="title" ref="title"/>
+          <input type="text" placeholder="description goes here." ref="description"/>
           <button onClick={e => this._submitBookmark(e)}>make a bookmark</button>
         </form>
       </div>
