@@ -3,7 +3,7 @@ import './CreateBookmark.css';
 import { browserHistory as history } from 'react-router';
 import api from '../../api'
 
-export default class CreateBoookmark extends Component {
+export default class CreateBookmark extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -17,7 +17,9 @@ export default class CreateBoookmark extends Component {
 	   this.props.fetch()
 	   console.log(data.body)
 	   history.push(`/boards/${this.props.boardId}`)
-   })
+   }).catch(
+     error => console.log("ERROR MAKING BOOKMARK")
+   )
   }
 
   render() {

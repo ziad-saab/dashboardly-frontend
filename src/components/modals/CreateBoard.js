@@ -36,7 +36,7 @@ export default class CreateBoard extends Component {
 		console.log(r.body[0])
 		history.push(`/boards/${r.body[0].id}`)
 	})
-    .catch( error => console.log("ERROR:", error.stack))
+    .catch( error => console.log("ERROR MAKING BOARD:", error.stack))
   }
 
   render() {
