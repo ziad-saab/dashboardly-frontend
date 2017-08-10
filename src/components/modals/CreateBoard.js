@@ -33,6 +33,7 @@ export default class CreateBoard extends Component {
   render() {
     return (
       <div>
+      
         <h1>Title</h1>
         <form onSubmit={this._submitForm}>
           <p>Title</p>
