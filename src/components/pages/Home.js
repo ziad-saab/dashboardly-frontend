@@ -38,6 +38,7 @@ export default class Home extends Component {
   }
   render() {
     let { boards } = this.state
+    console.log(boards)
     return (
       <div className="home">
         { boards.map(b =>
@@ -48,6 +49,7 @@ export default class Home extends Component {
             description={b.description}
             updatedAt={b.updatedAt}
             fetchData={this._fetchBoards}
+            ownerId={b.ownerId}
           />
         )}
         {auth.isLoggedIn() ? <AddButton type={'board'} clicked={this.toggle}/> : null}

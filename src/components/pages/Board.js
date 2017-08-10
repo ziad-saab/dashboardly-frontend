@@ -27,7 +27,9 @@ export default class Board extends Component {
         api.getBookmarks(this.props.params.id, localStorage.token)
       ])
       .then(res => {
+        console.log(res[0].body[0], "here mikey")
         this.setState({
+          boardOwner: res[0].body[0].ownerId,
           title: res[0].body[0].title,
           description: res[0].body[0].description,
           bookmarks: res[1].body.bookmarks
@@ -37,6 +39,7 @@ export default class Board extends Component {
   }
   render() {
     let { bookmarks } = this.state
+    console.log(bookmarks)
     return (
 	<div>
 	  <h1>{this.state.title}</h1>
@@ -49,8 +52,9 @@ export default class Board extends Component {
             title={b.title}
             description={b.description}
             url={b.url}
-			boardId={this.props.params.id}
-      fetchData={this.fetchBoardData}
+			      boardId={this.props.params.id}
+            fetchData={this.fetchBoardData}
+            ownerId={this.state.boardOwner}
           />
         )}
 

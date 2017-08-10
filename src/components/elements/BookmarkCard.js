@@ -20,8 +20,8 @@ export default class BookmarkCard extends Component {
         </div>
         <img src={url} alt={title}/>
       </a>
-		<EditButton type={`bookmark`} fetch={this.props.fetchData} id={this.props.id} boardId={this.props.boardId}/>
-		<DeleteButton type={`bookmark`} fetch={this.props.fetchData} id={this.props.id} boardId={this.props.boardId}/>
+      {+localStorage.user === +this.props.ownerId ? <EditButton fetch={this.props.fetchData} type={`bookmark`} id={this.props.id} boardId={this.props.boardId} /> : null}
+      {+localStorage.user === +this.props.ownerId ? <DeleteButton fetch={this.props.fetchData} type={`bookmark`} id={this.props.id} boardId={this.props.boardId} /> : null}
 	</div>
     );
   }
