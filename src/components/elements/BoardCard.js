@@ -12,6 +12,7 @@ export default class BoardCard extends Component {
 
   render() {
     let { title, description, id } = this.props
+    console.log(localStorage.user, this.props.ownerId, "the stuff")
     return (
 	  <div>
 	      <Link to={`/boards/${id}`}>
@@ -20,8 +21,8 @@ export default class BoardCard extends Component {
 	          <p>{ description }</p>
 	        </div>
 	      </Link>
-	  	  <EditButton type={`board`} id={id} />
-	      <DeleteButton type={`board`} id={id} />
+	  	  {+localStorage.user === +this.props.ownerId ? <EditButton type={`board`} id={id} /> : null}
+	  	  {+localStorage.user === +this.props.ownerId ? <DeleteButton fetch={this.props.fetchData} type={`board`} id={id} /> : null}
 	  </div>
     );
   }
