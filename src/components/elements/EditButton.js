@@ -32,22 +32,17 @@ export default class EditButton extends Component {
 		}
 	}
 
-	_handleClick = (e) => {
-		e.preventDefault();
-
-		this.setState({showResults: true})
-	}
 
 	render() {
-		if (this.state.showResults === true) {
-			return (<ModifyBoard id={this.props.id} click={e => this._handleEdit(e)}/>)
+			return (
+				<div>
+				<ModifyBoard show={this.state.isMenuOpen} closeMenu={this.closeMenu} id={this.props.id} click={e => this._handleEdit(e)}/>
+				<div className="add-button">
+					<button onClick={() => this.setState({isMenuOpen: !this.isMenuOpen})}>
+						EDIT
+					</button>
+				</div>
+				</div>
+			)
 		}
-		return (
-			<div className="add-button">
-				<button onClick={() => this.setState({isMenuOpen: true})}>
-					EDIT
-				</button>
-			</div>
-		)
 	}
-}

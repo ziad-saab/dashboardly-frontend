@@ -1,15 +1,21 @@
 import React, {Component} from 'react';
 import { browserHistory as history } from 'react-router';
 import api from '../../api';
+import './Menu.css';
+import onClickOutside from 'react-onclickoutside';
 
-export default class ModifyBoard extends Component {
+class ModifyBoard extends Component {
   constructor() {
     super();
     this.state = {
       inputValue : ''
     }
   }
-
+  handleClickOutside = () => {
+    if (this.props.show === true) {
+      this.props.closeMenu();
+    }
+  }
   _handleInput = (event) => {
 	event.preventDefault();
 
@@ -31,8 +37,12 @@ export default class ModifyBoard extends Component {
 
   }
   render() {
+    let {closeMenu, show} = this.props
+
     return (
-      <div>
+      <div className={`menu ${show
+				? "show"
+				: ""}`}>
         <h1>Modify Component</h1>
         <form onSubmit={this._submitForm}>
           <p>Title</p>
@@ -46,3 +56,4 @@ export default class ModifyBoard extends Component {
     );
   }
 }
+export default onClickOutside(ModifyBoard);
