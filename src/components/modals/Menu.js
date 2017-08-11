@@ -17,6 +17,7 @@ class Menu extends Component {
 	getImage = () => {
 		console.log(localStorage, 'this is inside login')
 		api.getMe(localStorage.token).then(data => data.body).then(r => {
+			localStorage.user= r.users_id
 			this.setState({
 				image: r.AvatarUrl,
 				loggedIn: auth.isLoggedIn()

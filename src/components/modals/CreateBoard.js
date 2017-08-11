@@ -46,16 +46,18 @@ export default class CreateBoard extends Component {
   })
   }
 
+
   render() {
     return (
       <div>
+      
         <h1>Title</h1>
         <form onSubmit={this._submitForm}>
           <p>Title</p>
           <input type="text" value={this.state.titleValue} onInput={this._handleTitle} ref="title"/>
           <p> {this.state.titleValue.length} / 50</p>
           <p>Description</p>
-          <input type="text" value={this.state.inputValue} onInput={this._handleInput} ref="description"/>
+          <input type="text" value={this.state.inputValue} onInput={this._handleInput} ref="description"/>s
           <p> {this.state.inputValue.length} / 80</p>
           <button>Create</button>
           <p>{this.state.errorTitle}</p>

@@ -11,6 +11,7 @@ export default class BookmarkCard extends Component {
   render() {
 	console.log(this.props, "these are the props inside bookmark card")
     let { title, description, url } = this.props
+    console.log(title, "the title")
     return (
 	<div>
       <a className="bookmark-card" href={url}>
@@ -20,8 +21,8 @@ export default class BookmarkCard extends Component {
         </div>
         <img src={url} alt={title}/>
       </a>
-		<EditButton type={`bookmark`} id={this.props.id} boardId={this.props.boardId}/>
-		<DeleteButton type={`bookmark`} id={this.props.id} boardId={this.props.boardId}/>
+      {+localStorage.user === +this.props.ownerId ? <EditButton fetch={this.props.fetchData} type={`bookmark`} id={this.props.id} boardId={this.props.boardId} /> : null}
+      {+localStorage.user === +this.props.ownerId ? <DeleteButton fetch={this.props.fetchData} type={`bookmark`} id={this.props.id} boardId={this.props.boardId} /> : null}
 	</div>
     );
   }

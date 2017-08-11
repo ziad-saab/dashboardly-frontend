@@ -7,17 +7,21 @@ export default class AddButton extends Component {
 		super(props);
 
 		this.state = {
-			showResults: false
+			showResults: false,
+			showCreateMenu: false
 		};
 	}
 	handleClick(e) {
 		e.preventDefault();
-		this.setState({showResults: true});
+		this.setState({
+			showResults: true,
+			showCreateMenu: true
+		});
 
 	}
 	render() {
 		if (this.state.showResults === true && this.props.type === 'bookmark') {
-			return (<CreateBookmark fetch={this.props.fetchData} boardId={this.props.id}/>)
+			return (<CreateBookmark showCreateMenu={this.state.showCreateMenu} fetch={this.props.fetchData} boardId={this.props.id}/>)
 		}
 
 		if (this.state.showResults === true && this.props.type === 'board') {
