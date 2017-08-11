@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ModifyBoard from '../modals/ModifyBoard';
+import ModifyBookmark from '../modals/ModifyBookmark';
 import api from '../../api';
 
 export default class EditButton extends Component {
@@ -34,9 +35,11 @@ export default class EditButton extends Component {
 
 
 	render() {
+		console.log(this.props.type)
 			return (
 				<div>
-				<ModifyBoard type={this.props.type} show={this.state.isMenuOpen} closeMenu={this.closeMenu} id={this.props.id} fetch={this.props.fetch} boardId={this.props.boardId} onSubmit={e => this._handleEdit(e)}/>
+				{this.props.type === 'board' ? <ModifyBoard type={this.props.type} show={this.state.isMenuOpen} closeMenu={this.closeMenu} id={this.props.id} fetch={this.props.fetch} boardId={this.props.boardId} onSubmit={e => this._handleEdit(e)} /> : null}
+			  {this.props.type === 'bookmark' ? <ModifyBookmark type={this.props.type} show={this.state.isMenuOpen} closeMenu={this.closeMenu} id={this.props.id} fetch={this.props.fetch} boardId={this.props.boardId} onSubmit={e => this._handleEdit(e)}/> : null}
 				<div className="add-button">
 					<button onClick={() => this.setState({isMenuOpen: !this.isMenuOpen})}>
 						EDIT

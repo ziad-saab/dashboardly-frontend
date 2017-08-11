@@ -11,6 +11,7 @@ export default class BookmarkCard extends Component {
   render() {
 	console.log(this.props, "these are the props inside bookmark card")
     let { title, description, url } = this.props
+    console.log(title, "the title")
     return (
 	<div>
       <a className="bookmark-card" href={url}>
