@@ -22,7 +22,7 @@ class Menu extends Component {
 				loggedIn: auth.isLoggedIn()
 			})
 
-		}).catch(e => console.log(e))
+		}).catch(e => console.log(e, "GET IMAGE ERROR"))
 	}
 
 	componentDidMount(prevProps, prevState) {

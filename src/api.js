@@ -78,6 +78,12 @@ class Api {
 	.get(`${API_HOST}/auth/me`)
 	.set('Authorization', `token ${token}`)
   )
+
+  requestSignup = (email, password) => (
+    superagent
+    .post(`${API_HOST}/auth/users`)
+    .send({ email, password })
+  )
 }
 
 export default new Api();
