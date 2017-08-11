@@ -6,7 +6,9 @@ export default class CreateBoard extends Component {
   constructor() {
     super();
     this.state = {
-      inputValue : ''
+      inputValue : '',
+      titleValue : '',
+      errorTitle : ''
     }
   }
 
@@ -18,6 +20,15 @@ export default class CreateBoard extends Component {
     }
   }
 
+  _handleTitle = (event) => {
+    if(event.target.value.length <= 50) {
+      this.setState({
+        titleValue : event.target.value
+      })
+    }
+  }
+
+
   _submitForm = (e) => {
     e.preventDefault();
 
@@ -26,7 +37,13 @@ export default class CreateBoard extends Component {
 		console.log(r.body[0])
 		history.push(`/boards/${r.body[0].id}`)
 	})
-    .catch( error => console.log("ERROR:", error.stack))
+    .catch( e => {
+      console.log("ERROR MAKING BOARD:", e.message)
+      this.setState({
+        errorTitle : "You board needs a title"
+      })
+      console.log(e)
+  })
   }
 
 
@@ -37,11 +54,13 @@ export default class CreateBoard extends Component {
         <h1>Title</h1>
         <form onSubmit={this._submitForm}>
           <p>Title</p>
-          <input type="text" ref="title"/>
+          <input type="text" value={this.state.titleValue} onInput={this._handleTitle} ref="title"/>
+          <p> {this.state.titleValue.length} / 50</p>
           <p>Description</p>
           <input type="text" value={this.state.inputValue} onInput={this._handleInput} ref="description"/>s
           <p> {this.state.inputValue.length} / 80</p>
           <button>Create</button>
+          <p>{this.state.errorTitle}</p>
         </form>
       </div>
     );

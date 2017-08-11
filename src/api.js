@@ -55,8 +55,9 @@ class Api {
   )
 
   createBookmark = (title, url, description, boardId, token) => (
+
 	  superagent
-	  .post(`${API_HOST}/boards/${boardId}/bookmarks`)
+	  .post(`${API_HOST}/boards/${boardId}/bookmarks`, console.log("in create bookmark"))
 	  .send({title, url, description})
 	  .set('Authorization', `token ${token}`)
   )
@@ -78,6 +79,12 @@ class Api {
 	superagent
 	.get(`${API_HOST}/auth/me`)
 	.set('Authorization', `token ${token}`)
+  )
+
+  requestSignup = (email, password) => (
+    superagent
+    .post(`${API_HOST}/auth/users`)
+    .send({ email, password })
   )
 }
 

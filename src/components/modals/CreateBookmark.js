@@ -3,10 +3,13 @@ import './CreateBookmark.css';
 import { browserHistory as history } from 'react-router';
 import api from '../../api'
 
-export default class CreateBoookmark extends Component {
+export default class CreateBookmark extends Component {
   constructor(props) {
     super(props);
     this.state = {
+
+      error : ''
+
     };
   }
 
@@ -14,7 +17,17 @@ export default class CreateBoookmark extends Component {
    e.preventDefault();
    api.createBookmark(this.refs.title.value, this.refs.url.value, this.refs.description.value, this.props.boardId, localStorage.token)
    .then( data => {
+     console.log(data.body)
 	   this.props.fetch()
+
+	   console.log(data.body)
+	   history.push(`/boards/${this.props.boardId}`)
+   }).catch( error => {
+     console.log("ERROR MAKING BOOKMARK")
+     this.setState({
+       error : 'You need at least a title'
+     })
+
    })
   }
 
@@ -28,6 +41,7 @@ export default class CreateBoookmark extends Component {
           <input type="text" placeholder="description goes here." ref="description"/>
           <button onClick={e => this._submitBookmark(e)}>make a bookmark</button>
         </form>
+        <p>{this.state.error}</p>
       </div>
     );
   }
