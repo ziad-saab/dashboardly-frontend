@@ -1,8 +1,8 @@
-.menu {
+.editMenu {
   width: 270px;
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: absolute;
+  margin: 0 auto;
+  left:50;
   z-index: 10;
   background: lightgrey;
   -webkit-transition: 0.5s;
@@ -16,23 +16,21 @@
 
 .menu.show {
   transform: translateX(0px);
+  margin:0 auto;
   opacity: 1;
   visibility: visible;
 }
 
-.menu__header {
-  height: 160px;
+.editMenuHeader {
+  /*height: 160px;*/
+  height:10px;
+  text-align: center;
 }
 
-.menu__avatar {
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
-  background: green;
-  margin: 1rem;
-}
 
-.menu__list {
+.editMenuList {
   display: flex;
   flex-flow: column;
+  align-items: center;
+  justify-content: center;
 }

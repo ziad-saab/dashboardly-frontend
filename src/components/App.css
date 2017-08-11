@@ -19,7 +19,8 @@ a {
 }
 
 .App-navbar {
-  color: DarkSeaGreen;
+
+  background-color: DarkSeaGreen;
   padding: 1.5rem;
   width: 100%;
   display: flex;
@@ -42,4 +43,8 @@ a {
 
 .settings-icon:hover, .menu-icon:hover, .App-navbar__title:hover {
   color: DarkOliveGreen;
+}
+
+.fa{
+  color: white;
 }
